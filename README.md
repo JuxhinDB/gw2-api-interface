@@ -11,11 +11,17 @@ GuildWars2 API Client
 Table of Contents
 =================
 
+- [Pre-requisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
     + [Basic Usage](#basic-usage)
     + [Authenticated Endpoints](#authenticated-endpoints)
     + [Cursors and Limits](#cursors-and-limits)
+
+### Prerequisites
+-----
+
+- Python v3.4 or higher
 
 ### Installation
 -----
