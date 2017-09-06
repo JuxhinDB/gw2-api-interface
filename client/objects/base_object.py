@@ -43,10 +43,26 @@ class BaseAPIObject:
 
     def get(self, **kwargs):
         """Get a resource for specific object type"""
-        request_url = self._build_endpoint_url()
+        request_url = self._build_endpoint_base_url()
+
+        page = kwargs.get('page')
+        page_size = kwargs.get('page_size')
+
+        if page or page_size:
+            request_url += '?'
+
+        if page:
+            request_url += 'page={page}&'.format(page=page)
+
+        if page_size:
+            assert 0 < page_size <= 200
+            request_url += 'page_size={page_size}'.format(page_size=page_size)
+
+        request_url.strip('&')  # Remove any trailing ampersand
+
         return self.session.get(request_url)
 
-    def _build_endpoint_url(self):
+    def _build_endpoint_base_url(self):
         """Construct the base URL to access an API object"""
         return '{base_url}/{version}/{object}'.format(base_url=self.base_url,
                                                       version=self.version,
