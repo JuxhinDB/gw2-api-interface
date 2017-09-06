@@ -1,3 +1,5 @@
+![Guild Wars 2 Banner](../master/res/images/gw2-banner.jpg?raw=true)
+
 Currently Work in Progress. Currently only APIv1 has been mapped.
 
 ----
