@@ -97,6 +97,40 @@ class AccountWallet(BaseAPIv2Object):
     pass
 
 
+class Achievements(BaseAPIv2Object):
+    pass
+
+
+class AchievementsCategories(BaseAPIv2Object):
+
+    def get(self, category_id=None, **kwargs):
+        endpoint_url = self._build_endpoint_base_url()
+
+        if category_id:
+            endpoint_url += '/' + str(category_id)
+
+        return self.session.get(endpoint_url).json()
+
+
+class AchievementsDaily(BaseAPIv2Object):
+    pass
+
+
+class AchievementsDailyTomorrow(BaseAPIv2Object):
+    pass
+
+
+class AchievementsGroups(BaseAPIv2Object):
+
+    def get(self, group_uuid=None, **kwargs):
+        endpoint_url = self._build_endpoint_base_url()
+
+        if group_uuid:
+            endpoint_url += '/' + str(group_uuid)
+
+        return self.session.get(endpoint_url).json()
+
+
 class Build(BaseAPIv2Object):
     pass
 
@@ -123,4 +157,9 @@ API_OBJECTS = [Account('account'),
                AccountSkins('account/skins'),
                AccountTitles('account/titles'),
                AccountWallet('account/wallet'),
+               Achievements('achievements'),
+               AchievementsCategories('achievements/categories'),
+               AchievementsDaily('achievements/daily'),
+               AchievementsDailyTomorrow('achievements/daily/tomorrow'),
+               AchievementsGroups('achievements/groups'),
                Build('build')]
