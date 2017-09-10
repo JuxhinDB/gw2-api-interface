@@ -45,11 +45,15 @@ class BaseAPIObject:
         """Get a resource for specific object type"""
         request_url = self._build_endpoint_base_url()
 
+        id = kwargs.get('id')
         page = kwargs.get('page')
         page_size = kwargs.get('page_size')
 
+        if id:
+            request_url += '/' + str(id)  # {base_url}/{object}/{id}
+
         if page or page_size:
-            request_url += '?'
+            request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
 
         if page:
             request_url += 'page={page}&'.format(page=page)

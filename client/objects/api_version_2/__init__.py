@@ -5,7 +5,8 @@ class BaseAPIv2Object(BaseAPIObject):
     """Extends the base API handler to automatically handle pagination"""
 
     def get(self, **kwargs):
-        return super().get(page=kwargs.get('page'),
+        return super().get(id=kwargs.get('id'),
+                           page=kwargs.get('page'),
                            page_size=kwargs.get('page_size')).json()
 
 
@@ -102,14 +103,7 @@ class Achievements(BaseAPIv2Object):
 
 
 class AchievementsCategories(BaseAPIv2Object):
-
-    def get(self, category_id=None, **kwargs):
-        endpoint_url = self._build_endpoint_base_url()
-
-        if category_id:
-            endpoint_url += '/' + str(category_id)
-
-        return self.session.get(endpoint_url).json()
+    pass
 
 
 class AchievementsDaily(BaseAPIv2Object):
@@ -121,17 +115,30 @@ class AchievementsDailyTomorrow(BaseAPIv2Object):
 
 
 class AchievementsGroups(BaseAPIv2Object):
+    pass
 
-    def get(self, group_uuid=None, **kwargs):
-        endpoint_url = self._build_endpoint_base_url()
 
-        if group_uuid:
-            endpoint_url += '/' + str(group_uuid)
+class BackstoryAnswers(BaseAPIv2Object):
+    pass
 
-        return self.session.get(endpoint_url).json()
+
+class BackstoryQuestions(BaseAPIv2Object):
+    pass
 
 
 class Build(BaseAPIv2Object):
+    pass
+
+
+class Cats(BaseAPIv2Object):
+    pass
+
+
+class Characters(BaseAPIv2Object):
+    pass
+
+
+class Colors(BaseAPIv2Object):
     pass
 
 
@@ -162,4 +169,9 @@ API_OBJECTS = [Account('account'),
                AchievementsDaily('achievements/daily'),
                AchievementsDailyTomorrow('achievements/daily/tomorrow'),
                AchievementsGroups('achievements/groups'),
-               Build('build')]
+               BackstoryAnswers('backstory/answers'),
+               BackstoryQuestions('backstory/questions'),
+               Build('build'),
+               Cats('cats'),
+               Characters('characters'),
+               Colors('colors')]
