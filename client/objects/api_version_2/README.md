@@ -1,0 +1,110 @@
+# GuildWars2 API version 2
+
+> Contains all API objects exposed by the GW2 APIv2. Official
+> documentation can be found [here](https://wiki.guildwars2.com/wiki/API:2)
+
+##### Objects
+----
+
+- Account
+    - Achievements
+    - Bank
+    - Dungeons
+    - Dyes
+    - Finishers
+    - Gliders
+    - Home Cats
+    - Home Nodes
+    - Inventory
+    - Mailcarriers
+    - Masteries
+    - Mastery Points
+    - Materials
+    - Minis
+    - Outfits
+    - Pvp Heroes
+    - Raids
+    - Recipes
+    - Skins
+    - Titles
+    - Wallet
+- Achievements
+    - Categories
+    - Daily
+    - Daily Tomorrow
+    - Groups
+- Backstory Answers
+- Backstory Questions
+- Build
+- Cats
+- Characters
+- Colors
+- Commerce
+    - Delivery
+    - Exchange
+    - Exchange Coins
+    - Exchange Gems
+    - Listings
+    - Prices
+    - Transactions
+- Continents
+- Currencies
+- Dungeons
+- Emblem
+- Files
+- Finishers
+- Gliders
+- Guild ID
+    - Log
+    - Members
+    - Ranks
+    - Stash
+    - Teams
+    - Treasury
+    - Upgrades
+- Guild
+    - Permissions
+    - Search
+    - Upgrades
+- Items
+- Itemstats
+- Legends
+- Mailcarriers
+- Maps
+- Masteries
+- Materials
+- Minis
+- Nodes
+- Outfits
+- Pets
+- Professions
+- PvP
+    - Amulets
+    - Games
+    - Heroes
+    - Ranks
+    - Seasons
+    - Seasons Leaderboards
+    - Standings
+    - Stats
+- Quaggans
+- Races
+- Raids
+- Recipes
+- Recipes Search
+- Skills
+- Skins
+- Specializations
+- Stories
+- Stories Seasons
+- Titles
+- Tokeninfo
+- Traits
+- Worlds
+- WvW
+    - Abilities
+    - Matches
+    - Matches Stats Teams
+    - Objectives
+    - Ranks
+    - Upgrades

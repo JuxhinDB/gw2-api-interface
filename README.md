@@ -19,8 +19,13 @@ Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
     + [Basic Usage](#basic-usage)
+    + [Advanced Usage](#advanced-usage)
+        - [API Objects](#api-objects)
+        - [Client Settings](#client-settings)
+        - [Proxy and SSL](#proxy-and-ssl)
     + [Authenticated Endpoints](#authenticated-endpoints)
     + [Cursors and Limits](#cursors-and-limits)
+- [Examples](#examples)
 
 ### Prerequisites
 -----
@@ -123,6 +128,39 @@ gw2_client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0
 
 #### Authenticated Endpoints
 
-WIP
+There may be cases where certain endpoints such as `Accounts` or `Guild` related endpoints may require authentication.
+This is generally configured on initialization of the client, like so:
+
+`client = GuildWars2Client(api_key='API_KEY_VALUE_HERE')`
+
+If you want to generate your own API key, please refer to the following [link](https://account.arena.net/applications).
 
 #### Cursors and Limits
+
+WIP
+
+### Examples
+
+Below are a few examples and one-liners that may help when testing or debugging the project:
+
+**Using [Fiddler](http://www.telerik.com/fiddler)**:
+
+```
+from client import GuildWars2Client; client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0.1:8888'}, verify_ssl=False, api_key='API_KEY')
+```
+
+**APIv2 Searching for Guild**
+
+```
+client.guildsearch.get(name='Mythical Realms')
+
+>>> 0CB3B1A7-4C70-E611-80D3-E4115BE8BBE8
+```
+
+**APIv2 Retrieving guild members**
+
+```
+client.guildidmembers.get('0CB3B1A7-4C70-E611-80D3-E4115BE8BBE8')
+
+>>> {"text": "access restricted to guild leaders"}  # :-(
+```
