@@ -41,28 +41,35 @@ class BaseAPIObject:
         self.base_url = GuildWars2Client.BASE_URL
         self.version = GuildWars2Client.VERSION
 
-    def get(self, **kwargs):
+    def get(self, url=None, **kwargs):
         """Get a resource for specific object type"""
-        request_url = self._build_endpoint_base_url()
 
-        id = kwargs.get('id')
-        page = kwargs.get('page')
-        page_size = kwargs.get('page_size')
+        # Done to allow cases where we need to call a specific endpoint
+        #  without re-implementing the same method. If we specify the
+        #  endpoint, ignore everything else and just sent the request
+        if not url:
+            request_url = self._build_endpoint_base_url()
 
-        if id:
-            request_url += '/' + str(id)  # {base_url}/{object}/{id}
+            id = kwargs.get('id')
+            page = kwargs.get('page')
+            page_size = kwargs.get('page_size')
 
-        if page or page_size:
-            request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
+            if id:
+                request_url += '/' + str(id)  # {base_url}/{object}/{id}
 
-        if page:
-            request_url += 'page={page}&'.format(page=page)
+            if page or page_size:
+                request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
 
-        if page_size:
-            assert 0 < page_size <= 200
-            request_url += 'page_size={page_size}'.format(page_size=page_size)
+            if page:
+                request_url += 'page={page}&'.format(page=page)
 
-        request_url.strip('&')  # Remove any trailing ampersand
+            if page_size:
+                assert 0 < page_size <= 200
+                request_url += 'page_size={page_size}'.format(page_size=page_size)
+
+            request_url.strip('&')  # Remove any trailing ampersand
+        else:
+            request_url = url
 
         return self.session.get(request_url)
 
