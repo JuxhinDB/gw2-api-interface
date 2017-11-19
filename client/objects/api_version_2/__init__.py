@@ -389,7 +389,19 @@ class Recipes(BaseAPIv2Object):
 
 
 class RecipesSearch(BaseAPIv2Object):
-    pass
+
+    def get(self, **kwargs):
+        if any(key in ['input', 'output'] for key in kwargs):
+            param = 'input' if 'input' in kwargs else 'output'
+            item_id = kwargs.get(param)
+
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url += '?{param}={item_id}'.format(param=param, item_id=item_id)
+
+            return super().get(url=endpoint_url)
+
+        # Fallback to let the official API handle the error cases
+        return super().get(**kwargs)
 
 
 class Skills(BaseAPIv2Object):
