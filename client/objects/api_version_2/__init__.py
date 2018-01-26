@@ -6,6 +6,7 @@ class BaseAPIv2Object(BaseAPIObject):
 
     def get(self, **kwargs):
         return super().get(id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
                            url=kwargs.get('url'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size')).json()
