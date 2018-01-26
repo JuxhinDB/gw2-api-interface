@@ -51,11 +51,17 @@ class BaseAPIObject:
             request_url = self._build_endpoint_base_url()
 
             id = kwargs.get('id')
+            ids = kwargs.get('ids')
             page = kwargs.get('page')
             page_size = kwargs.get('page_size')
 
             if id:
                 request_url += '/' + str(id)  # {base_url}/{object}/{id}
+
+            if ids:
+                request_url += '?ids=' # {base_url}/{object}?ids={ids}
+                for id in ids:
+                    request_url += str(id) + ','
 
             if page or page_size:
                 request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
@@ -68,6 +74,7 @@ class BaseAPIObject:
                 request_url += 'page_size={page_size}'.format(page_size=page_size)
 
             request_url.strip('&')  # Remove any trailing ampersand
+            request_url.strip(',')  # Remove any trailing commas from ids
         else:
             request_url = url
 
