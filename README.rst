@@ -75,7 +75,10 @@ The format for accessing an object will always be
 .. code-block:: python
 
     gw2_client.build.get()
-    >>> 81583
+
+::
+
+    81583
 
 
 Advanced Usage
@@ -92,7 +95,10 @@ method on the client object, like so:
 
     gw2_client = GuildWars2Client(version='v1')
     dir(gw2_client)
-    >>> ['BASE_URL', 'LANG', 'VERSION',
+
+::
+
+    ['BASE_URL', 'LANG', 'VERSION',
     'api_key', 'base_url', 'build', 'colors', 'continents', 'eventdetails',
     'files', 'guilddetails', 'itemdetails', 'items', 'lang', 'mapfloor',
     'mapnames', 'maps', 'proxy', 'recipedetails', 'recipes', 'session',
@@ -111,12 +117,14 @@ object.
 
 .. code-block:: python
 
-    from client import GuildWars2Client
+    from gw2api import GuildWars2Client
     gw2_client = GuildWars2Client()
 
     gw2_client
 
-    >>> <GuildWars2Client https://api.guildwars2.com
+::
+
+    <GuildWars2Client https://api.guildwars2.com
     Version: v2
     API Key: None
     Language: en
@@ -132,7 +140,7 @@ proxy during client initialization.
 
 .. code-block:: python
 
-    from client import GuildWars2Client
+    from gw2api import GuildWars2Client
     gw2_client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0.1:8888'}, version='v1'})
 
 Additionally if you're passing through a local proxy, you may need to
@@ -140,7 +148,7 @@ set SSL verification to false like so:
 
 .. code-block:: python
 
-    from client import GuildWars2Client
+    from gw2api import GuildWars2Client
     gw2_client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0.1:8888'}, version='v1', verify_ssl=False)
 
 
@@ -172,11 +180,12 @@ Below are a few examples and one-liners that may help when testing or
 debugging the project:
 
 
-**Using `Fiddler <http://www.telerik.com/fiddler>`__**:
+**Using** `Fiddler <http://www.telerik.com/fiddler>`__:
 
 .. code-block:: python
 
-    from client import GuildWars2Client; client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0.1:8888'}, verify_ssl=False, api_key='API_KEY')
+    from gw2api import GuildWars2Client
+    client = GuildWars2Client(proxy={'http': '127.0.0.1:8888', 'https': '127.0.0.1:8888'}, verify_ssl=False, api_key='API_KEY')
 
 
 **APIv2 Searching for Guild**
@@ -185,7 +194,9 @@ debugging the project:
 
     client.guildsearch.get(name='Mythical Realms')
 
-    >>> 0CB3B1A7-4C70-E611-80D3-E4115BE8BBE8
+::
+
+    0CB3B1A7-4C70-E611-80D3-E4115BE8BBE8
 
 
 **APIv2 Retrieving guild members**
@@ -194,7 +205,9 @@ debugging the project:
 
     client.guildidmembers.get('0CB3B1A7-4C70-E611-80D3-E4115BE8BBE8')
 
-    >>> {"text": "access restricted to guild leaders"}  # :-(
+::
+
+    {"text": "access restricted to guild leaders"}  # :-(
 
 
 .. |Build Status| image:: https://travis-ci.org/JuxhinDB/gw2-api-interface.svg?branch=feature%2Fapi-requests
