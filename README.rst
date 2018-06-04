@@ -1,3 +1,4 @@
+
 .. figure:: https://raw.githubusercontent.com/JuxhinDB/gw2-api-interface/master/res/images/gw2-banner.jpg
    :alt: Guild Wars 2 Banner
 
@@ -42,9 +43,16 @@ Prerequisites
 Installation
 ------------
 
+See PyPi package `here <https://pypi.org/project/GuildWars2-API-Client/>`_:
+
+::
+
+    pip install GuildWars2-API-Client
+
 ::
 
     pip install git+https://github.com/JuxhinDB/gw2-api-interface.git#egg=gw2api
+
 
 
 Usage
