@@ -70,9 +70,9 @@ class GuildWars2Client:
         """Creates and assigned API Objects to the class instance"""
 
         if GuildWars2Client.VERSION == 'v1':
-            from client.objects.api_version_1 import API_OBJECTS
+            from gw2api.objects.api_version_1 import API_OBJECTS
         elif GuildWars2Client.VERSION == 'v2':
-            from client.objects.api_version_2 import API_OBJECTS
+            from gw2api.objects.api_version_2 import API_OBJECTS
         else:
             raise ValueError('Unable to import API Objects, make '
                              'sure the version passed is valid - ' + GuildWars2Client.VERSION)

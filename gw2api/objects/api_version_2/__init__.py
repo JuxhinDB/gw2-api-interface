@@ -1,4 +1,4 @@
-from client.objects.base_object import BaseAPIObject
+from gw2api.objects.base_object import BaseAPIObject
 
 
 class BaseAPIv2Object(BaseAPIObject):

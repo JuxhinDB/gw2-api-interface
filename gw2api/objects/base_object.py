@@ -1,4 +1,4 @@
-from client import GuildWars2Client
+from gw2api import GuildWars2Client
 
 
 class BaseAPIObject:
