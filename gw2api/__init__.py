@@ -1,3 +1,4 @@
+import copy
 import requests
 
 
@@ -7,8 +8,6 @@ class GuildWars2Client:
     LANG = 'en'
     VERSION = 'v2'
     BASE_URL = 'https://api.guildwars2.com'
-
-    session = None
 
     def __init__(self, base_url=BASE_URL, version=VERSION, lang=LANG,
                  api_key=None, proxy=None, verify_ssl=True):
@@ -33,7 +32,7 @@ class GuildWars2Client:
 
         # This must be done before we build and assign the API objects (below)
         #  so as to avoid initializing them with a null session
-        GuildWars2Client.session = self.__build_requests_session()
+        self.session = self.__build_requests_session()
 
         # Constructs a list of API Objects to be assigned to this instance
         self.__build_object_clients()
@@ -80,6 +79,8 @@ class GuildWars2Client:
         objects = API_OBJECTS
 
         for object_ in objects:
+            object_ = copy.copy(object_)
+            object_.session = self.session
             setattr(self, object_.__class__.__name__.lower(), object_)
 
     def __repr__(self):

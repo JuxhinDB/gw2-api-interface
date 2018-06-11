@@ -1,3 +1,4 @@
+from requests import Session
 from gw2api import GuildWars2Client
 
 
@@ -33,9 +34,7 @@ class BaseAPIObject:
             raise ValueError('API Object requires `object_type` to be passed for %s'
                              .format(self.__class__.__name__))
 
-        assert GuildWars2Client.session
-
-        self.session = GuildWars2Client.session
+        self.session = None
         self.object_type = object_type
 
         self.base_url = GuildWars2Client.BASE_URL
@@ -44,24 +43,27 @@ class BaseAPIObject:
     def get(self, url=None, **kwargs):
         """Get a resource for specific object type"""
 
+        assert isinstance(self.session, Session), "BaseObject.session is not yet instantiated. Make sure an instance" \
+                                                  "of GuildWars2APIClient is created first to be able to send requests."
+
         # Done to allow cases where we need to call a specific endpoint
         #  without re-implementing the same method. If we specify the
         #  endpoint, ignore everything else and just sent the request
         if not url:
             request_url = self._build_endpoint_base_url()
 
-            id = kwargs.get('id')
+            _id = kwargs.get('id')
             ids = kwargs.get('ids')
             page = kwargs.get('page')
             page_size = kwargs.get('page_size')
 
-            if id:
-                request_url += '/' + str(id)  # {base_url}/{object}/{id}
+            if _id:
+                request_url += '/' + str(_id)  # {base_url}/{object}/{id}
 
             if ids:
                 request_url += '?ids=' # {base_url}/{object}?ids={ids}
-                for id in ids:
-                    request_url += str(id) + ','
+                for _id in ids:
+                    request_url += str(_id) + ','
 
             if page or page_size:
                 request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
