@@ -178,6 +178,7 @@ class WvWObjectiveNames(BaseAPIObject):
         response = super().get()
         return response.json()
 
+
 API_OBJECTS = [Build('build'),
                Colors('colors'),
                Continents('continents'),
