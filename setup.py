@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
-__version__ = '0.5.5'
+__version__ = '0.5.7'
 REPOSITORY = 'https://github.com/JuxhinDB/gw2-api-interface'
 
 with open('README.rst', 'r') as f:
@@ -17,11 +17,7 @@ setup(
     author='JDB',
     author_email='JuxhinBox@gmail.com',
     url=REPOSITORY,
-    packages=['gw2api'],
-    package_dir={
-        'gw2api': 'gw2api'
-    },
-    download_url='{}/tarball/{}'.format(REPOSITORY, __version__),
+    packages=find_packages(exclude=['test', 'res']),
     install_requires=[
         'requests',
     ],
