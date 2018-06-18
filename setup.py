@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-__version__ = '0.5.0'
+__version__ = '0.5.5'
 REPOSITORY = 'https://github.com/JuxhinDB/gw2-api-interface'
 
 with open('README.rst', 'r') as f:
@@ -10,15 +10,18 @@ with open('README.rst', 'r') as f:
 
 
 setup(
-    name='GuildWars2 API Client',
+    name='GuildWars2-API-Client',
     version=__version__,
     description='Library that interfaces with the Guild Wars 2 API that supports v1 and v2',
     long_description=README,
     author='JDB',
     author_email='JuxhinBox@gmail.com',
     url=REPOSITORY,
-    download_url='{}/tarball/{}'.format(REPOSITORY, __version__),
     packages=['gw2api'],
+    package_dir={
+        'gw2api': 'gw2api'
+    },
+    download_url='{}/tarball/{}'.format(REPOSITORY, __version__),
     install_requires=[
         'requests',
     ],
