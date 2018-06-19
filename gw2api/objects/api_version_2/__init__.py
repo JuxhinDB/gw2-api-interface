@@ -175,6 +175,27 @@ class CommerceTransactions(BaseAPIv2Object):
 class Continents(BaseAPIv2Object):
 
     def _validate_kwargs(self, **kwargs):
+        """Validates the keyword arguments.
+
+        Since the continents endpoint is hierarchical, each level is dependent
+        on its predecessor.
+
+        Hence, the validation checks for the leaf supplied and walks up the
+        tree to see if
+        1. any higher level is missing
+        2. any higher level supplies multiple ids
+        In either case, a KeyError is raised.
+
+        Special care is taken of the 'id' and 'ids' keywords, as those
+        are synonymous for continents.
+
+        Args:
+            kwargs: The keyword arguments to validate.
+
+        Raises:
+            KeyError: if any needed level is missing, or any non-leaf level
+            provides multiple IDs.
+        """
         def raise_for_non_int(value):
             try:
                 int(str(value))
@@ -199,6 +220,37 @@ class Continents(BaseAPIv2Object):
                             raise_for_non_int(value)
 
     def get(self, **kwargs):
+        """Gets the continents resource.
+
+        This resource is slightly different than other API resources, hence
+        its differs slightly. Instead of using the id and ids attributes,
+        this resource can walk along several levels:
+            continents, floors, regions, maps, sectors
+
+        For each layer, individual (single) IDs can be specified.
+        For the leaf layer, i.e. the last specified layer, multiple IDs
+        can be specified.
+
+        If one layer is specified, all previous layers must be specified, too.
+        For example, if specifying regions=38, then floors and continents need
+        to be supplied, too.
+
+        Args:
+            kwargs: Can be any combination of
+                    - continents
+                    - floors
+                    - regions
+                    - maps
+                    - sectors
+                    With values being either single ints (ids), lists of ints,
+                    or strings. A special case is 'all', which can be used
+                    to get a list of all ids in a subresource.
+        Returns:
+            The JSON response.
+
+        Raises:
+            KeyError: if the validation of the keyword arguments fails.
+        """
         request_url = self._build_endpoint_base_url()
 
         self._validate_kwargs(**kwargs)
