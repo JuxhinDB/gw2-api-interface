@@ -48,7 +48,8 @@ def load_mock_text(filename_stem):
     Returns:
         The file content as text.
     """
-    return (mocks_path() / '{}.json'.format(filename_stem)).read_text()
+    with (mocks_path() / '{}.json'.format(filename_stem)).open() as f:
+        return f.read()
 
 
 def load_mock_json(filename_stem):
