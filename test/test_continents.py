@@ -1,3 +1,4 @@
+import collections
 import functools
 import inspect
 import itertools
@@ -216,7 +217,7 @@ def test_continents_multi_id(gw2_client, mock_adapter):
 
     test = 'continents2floors1regions7maps38sectors833_834'
     expected = load_mock_json(test)
-    actual = gw2_client.continents.get(continents=2, floors=1, regions=6,
+    actual = gw2_client.continents.get(continents=2, floors=1, regions=7,
                                        maps=38, sectors=[833, 834])
     assert actual == expected, 'Incorrect for ' + test
 
@@ -233,8 +234,8 @@ def test_continents_no_continents(gw2_client):
         'maps': 4,
         'sectors': 5,
     }
-    kwargs_powerset = map(dict, powerset(kwargs.items()))
-    for kwargs in kwargs_powerset:
+    kwargs_powerset = list(map(dict, powerset(kwargs.items())))
+    for kwargs in kwargs_powerset[1:]:
         with pytest.raises(KeyError, match=r'continents'):
             gw2_client.continents.get(**kwargs)
 
@@ -250,8 +251,8 @@ def test_continents_no_floors(gw2_client):
         'maps': 4,
         'sectors': 5,
     }
-    kwargs_powerset = map(dict, powerset(kwargs.items()))
-    for kwargs in kwargs_powerset:
+    kwargs_powerset = list(map(dict, powerset(kwargs.items())))
+    for kwargs in kwargs_powerset[1:]:
         with pytest.raises(KeyError, match=r'floors'):
             gw2_client.continents.get(continents=1, **kwargs)
 
@@ -266,8 +267,8 @@ def test_continents_no_regions(gw2_client):
         'maps': 4,
         'sectors': 5,
     }
-    kwargs_powerset = map(dict, powerset(kwargs.items()))
-    for kwargs in kwargs_powerset:
+    kwargs_powerset = list(map(dict, powerset(kwargs.items())))
+    for kwargs in kwargs_powerset[1:]:
         with pytest.raises(KeyError, match=r'regions'):
             gw2_client.continents.get(continents=1, floors=1, **kwargs)
 
@@ -281,8 +282,8 @@ def test_continents_no_maps(gw2_client):
     kwargs = {
         'sectors': 5,
     }
-    kwargs_powerset = map(dict, powerset(kwargs.items()))
-    for kwargs in kwargs_powerset:
+    kwargs_powerset = list(map(dict, powerset(kwargs.items())))
+    for kwargs in kwargs_powerset[1:]:
         with pytest.raises(KeyError, match=r'maps'):
             gw2_client.continents.get(continents=2, floors=1, regions=1, **kwargs)
 
@@ -296,14 +297,14 @@ def test_continents_inappropriate_multi_id(gw2_client):
     """
     levels = ['continents', 'floors', 'regions', 'maps', 'sectors']
     for i, list_level in enumerate(levels):
-        correct_levels = levels.copy()
-        del correct_levels[i]
-        for j in range(len(correct_levels)):
-            kwargs = {level: 1 for level in correct_levels[:j+1]}
-            kwargs[list_level] = [1, 2]
-
+        kwargs = collections.OrderedDict({level: 1 for level in levels})
+        kwargs[list_level] = [1, 2]
+        for level in reversed(levels):
+            if level == list_level:
+                break
             with pytest.raises(KeyError, match=r'too many ids'):
                 gw2_client.continents.get(**kwargs)
+            del kwargs[level]
 
 
 def test_continents_backwards_compatibility(gw2_client, mock_adapter):
