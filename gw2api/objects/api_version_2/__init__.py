@@ -215,6 +215,8 @@ class Continents(BaseAPIv2Object):
             if value_or_values == 'all':
                 return ''
             if isinstance(value_or_values, str):
+                if ',' in value_or_values:
+                    return '?ids=' + value_or_values
                 return '/' + value_or_values
             try:
                 return '?ids=' + ','.join(map(str, value_or_values))

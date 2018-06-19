@@ -121,9 +121,9 @@ def test_continents_single_id(gw2_client, mock_adapter):
     floor='all' is introduced, keeping continent=2 fixed.
     The same is done for all five deeper routes:
         continent     all,    2
-        floors        all,   15
+        floors        all,   15  # 15 as string
         regions       all,   26
-        maps          all, 1205
+        maps          all, 1205  # 1205 as string
         sectors       all, 1478
 
     Note that only single ids per level are tested, since it is impossible
@@ -140,9 +140,9 @@ def test_continents_single_id(gw2_client, mock_adapter):
     """
     # Prepare mock adapter
     url_parts = ['continents', 2,
-                 'floors', 15,
+                 'floors', '15',
                  'regions', 26,
-                 'maps', 1205,
+                 'maps', '1205',
                  'sectors', 1478]
     url_to_file = {}
     for i, url_part in enumerate(url_parts):
@@ -156,7 +156,7 @@ def test_continents_single_id(gw2_client, mock_adapter):
     # 1. continents='all'
     # 2. continents=2
     # 3. continents=2, floors='all'
-    # 4. continents=2, floors=15
+    # 4. continents=2, floors='15'
     # ...
     kwargs = {}
     for i in range(10):
@@ -198,6 +198,11 @@ def test_continents_multi_id(gw2_client, mock_adapter):
     expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=[1, 2])
     assert actual == expected, 'Incorrect for ' + test
+
+    test = 'continents1_2'
+    expected = load_mock_json(test)
+    actual = gw2_client.continents.get(continents='1,2')
+    assert actual == expected, 'Incorrect for ' + test + ' b'
 
     test = 'continents2floors1_6'
     expected = load_mock_json(test)
