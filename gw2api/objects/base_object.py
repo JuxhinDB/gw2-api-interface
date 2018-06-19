@@ -75,8 +75,8 @@ class BaseAPIObject:
                 assert 0 < page_size <= 200
                 request_url += 'page_size={page_size}'.format(page_size=page_size)
 
-            request_url.strip('&')  # Remove any trailing ampersand
-            request_url.strip(',')  # Remove any trailing commas from ids
+            request_url = request_url.strip('&')  # Remove any trailing ampersand
+            request_url = request_url.strip(',')  # Remove any trailing commas from ids
         else:
             request_url = url
 
