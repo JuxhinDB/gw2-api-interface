@@ -1,0 +1,483 @@
+[
+  {
+    "name": "Heart of the Mists",
+    "min_level": 0,
+    "max_level": 80,
+    "default_floor": 1,
+    "label_coord": [
+      5854,
+      7169
+    ],
+    "map_rect": [
+      [
+        -15360,
+        -15360
+      ],
+      [
+        15360,
+        15360
+      ]
+    ],
+    "continent_rect": [
+      [
+        4865,
+        6398
+      ],
+      [
+        6145,
+        7678
+      ]
+    ],
+    "points_of_interest": {
+      "1046": {
+        "name": "PvP Lobby Waypoint",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5350.55,
+          6925.49
+        ],
+        "id": 1046,
+        "chat_link": "[&BBYEAAA=]"
+      },
+      "1353": {
+        "name": "Portal to Lion's Arch",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5562.98,
+          7106.84
+        ],
+        "id": 1353,
+        "chat_link": "[&BEkFAAA=]"
+      },
+      "1354": {
+        "name": "Combat Training Waypoint",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5756.61,
+          6737.69
+        ],
+        "id": 1354,
+        "chat_link": "[&BEoFAAA=]"
+      },
+      "1355": {
+        "name": "Champion's Monument",
+        "type": "landmark",
+        "floor": 1,
+        "coord": [
+          5299.07,
+          6858.58
+        ],
+        "id": 1355,
+        "chat_link": "[&BEsFAAA=]"
+      },
+      "1356": {
+        "name": "Arena",
+        "type": "landmark",
+        "floor": 1,
+        "coord": [
+          5194.29,
+          7178.23
+        ],
+        "id": 1356,
+        "chat_link": "[&BEwFAAA=]"
+      },
+      "1357": {
+        "name": "Combat Training Island",
+        "type": "landmark",
+        "floor": 1,
+        "coord": [
+          5797.53,
+          6785.65
+        ],
+        "id": 1357,
+        "chat_link": "[&BE0FAAA=]"
+      },
+      "1359": {
+        "name": "Harfler Training Range",
+        "type": "landmark",
+        "floor": 1,
+        "coord": [
+          5791.52,
+          7243.86
+        ],
+        "id": 1359,
+        "chat_link": "[&BE8FAAA=]"
+      },
+      "1360": {
+        "name": "Market",
+        "type": "landmark",
+        "floor": 1,
+        "coord": [
+          5477.24,
+          6711.51
+        ],
+        "id": 1360,
+        "chat_link": "[&BFAFAAA=]"
+      },
+      "2520": {
+        "name": "Market Waypoint",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5540.46,
+          6742.55
+        ],
+        "id": 2520,
+        "chat_link": "[&BNgJAAA=]"
+      },
+      "2521": {
+        "name": "Siege Training Waypoint",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5786.27,
+          7214.86
+        ],
+        "id": 2521,
+        "chat_link": "[&BNkJAAA=]"
+      },
+      "2522": {
+        "name": "Arena Waypoint",
+        "type": "waypoint",
+        "floor": 1,
+        "coord": [
+          5097.78,
+          7180.97
+        ],
+        "id": 2522,
+        "chat_link": "[&BNoJAAA=]"
+      }
+    },
+    "tasks": {},
+    "skill_challenges": [],
+    "sectors": {
+      "759": {
+        "name": "Hall of Memories",
+        "level": 0,
+        "coord": [
+          5406.52,
+          7063.45
+        ],
+        "bounds": [
+          [
+            5969.94,
+            6662.89
+          ],
+          [
+            5740.63,
+            6438.31
+          ],
+          [
+            5453.25,
+            6424.37
+          ],
+          [
+            5201.22,
+            6453.44
+          ],
+          [
+            4983.06,
+            6653.39
+          ],
+          [
+            4901.23,
+            6865.02
+          ],
+          [
+            4874.67,
+            7062
+          ],
+          [
+            4894.5,
+            7237.45
+          ],
+          [
+            4916.85,
+            7361.34
+          ],
+          [
+            4984.87,
+            7509.33
+          ],
+          [
+            5167.72,
+            7628.92
+          ],
+          [
+            5485.59,
+            7650.6
+          ],
+          [
+            5757.16,
+            7568.79
+          ],
+          [
+            5966.47,
+            7402.32
+          ],
+          [
+            6103.92,
+            7183.93
+          ],
+          [
+            6103.3,
+            6913.16
+          ],
+          [
+            5969.94,
+            6662.89
+          ]
+        ],
+        "id": 759,
+        "chat_link": "[&BPcCAAA=]"
+      }
+    },
+    "adventures": [],
+    "id": 350,
+    "mastery_points": []
+  },
+  {
+    "name": "Battle of Kyhlo",
+    "min_level": 0,
+    "max_level": 0,
+    "default_floor": 6,
+    "label_coord": [
+      3628,
+      5507
+    ],
+    "map_rect": [
+      [
+        -9216,
+        -9216
+      ],
+      [
+        9216,
+        9216
+      ]
+    ],
+    "continent_rect": [
+      [
+        3326,
+        5374
+      ],
+      [
+        4094,
+        6142
+      ]
+    ],
+    "points_of_interest": {
+      "1100": {
+        "name": "Blue Team Rally Point",
+        "type": "waypoint",
+        "floor": 6,
+        "coord": [
+          3907.24,
+          5932.69
+        ],
+        "id": 1100,
+        "chat_link": "[&BEwEAAA=]"
+      },
+      "1101": {
+        "name": "Red Team Rally Point",
+        "type": "waypoint",
+        "floor": 6,
+        "coord": [
+          3508.69,
+          5614.63
+        ],
+        "id": 1101,
+        "chat_link": "[&BE0EAAA=]"
+      }
+    },
+    "tasks": {},
+    "skill_challenges": [],
+    "sectors": {
+      "875": {
+        "name": "Battle of Kyhlo",
+        "level": 0,
+        "coord": [
+          3717.91,
+          5789.33
+        ],
+        "bounds": [
+          [
+            3914.68,
+            6021.25
+          ],
+          [
+            3699.53,
+            6071.87
+          ],
+          [
+            3536.7,
+            6020.8
+          ],
+          [
+            3426.72,
+            5926.05
+          ],
+          [
+            3417.74,
+            5710.34
+          ],
+          [
+            3489.31,
+            5532.83
+          ],
+          [
+            3725.63,
+            5468.53
+          ],
+          [
+            3946.57,
+            5541.28
+          ],
+          [
+            4017.86,
+            5691.84
+          ],
+          [
+            4004.33,
+            5908.54
+          ],
+          [
+            3914.68,
+            6021.25
+          ]
+        ],
+        "id": 875,
+        "chat_link": "[&BGsDAAA=]"
+      }
+    },
+    "adventures": [],
+    "id": 549,
+    "mastery_points": []
+  },
+  {
+    "name": "Skyhammer",
+    "min_level": 0,
+    "max_level": 0,
+    "default_floor": 27,
+    "label_coord": [
+      7601,
+      7534
+    ],
+    "map_rect": [
+      [
+        -12288,
+        -6144
+      ],
+      [
+        12288,
+        9216
+      ]
+    ],
+    "continent_rect": [
+      [
+        7168,
+        7422
+      ],
+      [
+        8192,
+        8062
+      ]
+    ],
+    "points_of_interest": {
+      "1797": {
+        "name": "Blue Team Rally Point",
+        "type": "waypoint",
+        "floor": 9,
+        "coord": [
+          7595.29,
+          7882.28
+        ],
+        "id": 1797,
+        "chat_link": "[&BAUHAAA=]"
+      },
+      "1798": {
+        "name": "Red Team Rally Point",
+        "type": "waypoint",
+        "floor": 9,
+        "coord": [
+          7595.8,
+          7586.38
+        ],
+        "id": 1798,
+        "chat_link": "[&BAYHAAA=]"
+      }
+    },
+    "tasks": {},
+    "skill_challenges": [],
+    "sectors": {
+      "1110": {
+        "level": 0,
+        "coord": [
+          7662.14,
+          7744.6
+        ],
+        "bounds": [
+          [
+            7867.63,
+            7932.23
+          ],
+          [
+            7726.38,
+            7996.64
+          ],
+          [
+            7600.01,
+            7999.07
+          ],
+          [
+            7469.31,
+            7944.92
+          ],
+          [
+            7412.55,
+            7801.38
+          ],
+          [
+            7420.35,
+            7690.07
+          ],
+          [
+            7467.47,
+            7554.73
+          ],
+          [
+            7601.11,
+            7503.77
+          ],
+          [
+            7714.63,
+            7500.42
+          ],
+          [
+            7859.15,
+            7546.35
+          ],
+          [
+            7895.48,
+            7678.82
+          ],
+          [
+            7911.57,
+            7786.76
+          ],
+          [
+            7867.63,
+            7932.23
+          ]
+        ],
+        "id": 1110,
+        "chat_link": "[&BFYEAAA=]"
+      }
+    },
+    "adventures": [],
+    "id": 900,
+    "mastery_points": []
+  }
+]

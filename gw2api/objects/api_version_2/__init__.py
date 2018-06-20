@@ -173,7 +173,122 @@ class CommerceTransactions(BaseAPIv2Object):
 
 
 class Continents(BaseAPIv2Object):
-    pass
+
+    def _validate_kwargs(self, **kwargs):
+        """Validates the keyword arguments.
+
+        Since the continents endpoint is hierarchical, each level is dependent
+        on its predecessor.
+
+        Hence, the validation checks for the leaf supplied and walks up the
+        tree to see if
+        1. any higher level is missing
+        2. any higher level supplies multiple ids
+        In either case, a KeyError is raised.
+
+        Special care is taken of the 'id' and 'ids' keywords, as those
+        are synonymous for continents.
+
+        Args:
+            kwargs: The keyword arguments to validate.
+
+        Raises:
+            KeyError: if any needed level is missing, or any non-leaf level
+            provides multiple IDs.
+        """
+        def raise_for_non_int(value):
+            try:
+                int(str(value))
+            except ValueError:
+                raise KeyError('too many ids supplied for {}'.format(level))
+
+        levels = ['sectors', 'maps', 'regions', 'floors', 'continents']
+        for i, current_level in enumerate(levels):
+            if current_level in kwargs:
+                for level in reversed(levels[i+1:]):  # All higher levels
+                    if level not in kwargs:  # Check if level is supplied
+                        if level != 'continents':  # Backwards compatibility for ids
+                            raise KeyError('Please provide the {} key.'.format(level))
+                        else:
+                            if 'id' not in kwargs:
+                                raise KeyError('Please provide the continents key.')
+                    else:  # Check if no higher level supplies multiple IDs
+                        if level != 'continents':
+                            raise_for_non_int(kwargs.get(level))
+                        else:  # Backwards compatibility for ids
+                            value = kwargs.get(level) or kwargs.get('ids')
+                            raise_for_non_int(value)
+
+    def get(self, **kwargs):
+        """Gets the continents resource.
+
+        This resource is slightly different than other API resources, hence
+        its differs slightly. Instead of using the id and ids attributes,
+        this resource can walk along several levels:
+            continents, floors, regions, maps, sectors
+
+        For each layer, individual (single) IDs can be specified.
+        For the leaf layer, i.e. the last specified layer, multiple IDs
+        can be specified.
+
+        If one layer is specified, all previous layers must be specified, too.
+        For example, if specifying regions=38, then floors and continents need
+        to be supplied, too.
+
+        Args:
+            kwargs: Can be any combination of
+                    - continents
+                    - floors
+                    - regions
+                    - maps
+                    - sectors
+                    With values being either single ints (ids), lists of ints,
+                    or strings. A special case is 'all', which can be used
+                    to get a list of all ids in a subresource.
+        Returns:
+            The JSON response.
+
+        Raises:
+            KeyError: if the validation of the keyword arguments fails.
+        """
+        request_url = self._build_endpoint_base_url()
+
+        self._validate_kwargs(**kwargs)
+
+        _id = kwargs.get('id')
+        ids = kwargs.get('ids')
+        continents = kwargs.get('continents') or ids or _id
+        floors = kwargs.get('floors')
+        regions = kwargs.get('regions')
+        maps = kwargs.get('maps')
+        sectors = kwargs.get('sectors')
+
+        def id_string(value_or_values):
+            if value_or_values == 'all':
+                return ''
+            if isinstance(value_or_values, str):
+                if ',' in value_or_values:
+                    return '?ids=' + value_or_values
+                return '/' + value_or_values
+            try:
+                return '?ids=' + ','.join(map(str, value_or_values))
+            except TypeError:  # single values are not iterable
+                return '/' + str(value_or_values)
+
+        # Since we validate before, we just have to build the url in order
+        # not nested
+        if continents:
+            request_url += id_string(continents)
+        if floors:
+            request_url += '/floors' + id_string(floors)
+        if regions:
+            request_url += '/regions' + id_string(regions)
+        if maps:
+            request_url += '/maps' + id_string(maps)
+        if sectors:
+            request_url += '/sectors' + id_string(sectors)
+
+        return super().get(url=request_url)
 
 
 class Currencies(BaseAPIv2Object):

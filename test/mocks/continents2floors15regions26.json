@@ -1,0 +1,102 @@
+{
+  "name": "Fractals of the Mists",
+  "label_coord": [
+    12416,
+    3200
+  ],
+  "continent_rect": [
+    [
+      9856,
+      2304
+    ],
+    [
+      14976,
+      7424
+    ]
+  ],
+  "maps": {
+    "1205": {
+      "name": "Fractals of the Mists",
+      "min_level": 80,
+      "max_level": 80,
+      "default_floor": 15,
+      "label_coord": [
+        12288,
+        4352
+      ],
+      "map_rect": [
+        [
+          -24576,
+          -24576
+        ],
+        [
+          24576,
+          24576
+        ]
+      ],
+      "continent_rect": [
+        [
+          11204,
+          4414
+        ],
+        [
+          13252,
+          6462
+        ]
+      ],
+      "points_of_interest": {},
+      "tasks": {},
+      "skill_challenges": [],
+      "sectors": {
+        "1478": {
+          "name": "Shattered Observatory",
+          "level": 80,
+          "coord": [
+            12103.9,
+            5209.01
+          ],
+          "bounds": [
+            [
+              13052.5,
+              4722.29
+            ],
+            [
+              12835,
+              4556.63
+            ],
+            [
+              11323,
+              4530.93
+            ],
+            [
+              11244.7,
+              4621.64
+            ],
+            [
+              11345.1,
+              6237.11
+            ],
+            [
+              11822.9,
+              6385.64
+            ],
+            [
+              13103.9,
+              5408.81
+            ],
+            [
+              13052.5,
+              4722.29
+            ]
+          ],
+          "id": 1478,
+          "chat_link": "[&BMYFAAA=]"
+        }
+      },
+      "adventures": [],
+      "id": 1205,
+      "mastery_points": []
+    }
+  },
+  "id": 26
+}
