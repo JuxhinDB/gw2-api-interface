@@ -170,8 +170,6 @@ class CommerceExchangeCoins(BaseAPIv2Object):
 
         return super().get(url=endpoint_url)
 
-    pass
-
 
 class CommerceExchangeGems(BaseAPIv2Object):
     """Returns the current gems to coins exchange rate"""
@@ -190,8 +188,6 @@ class CommerceExchangeGems(BaseAPIv2Object):
         endpoint_url += "?quantity=" + str(quantity)
 
         return super().get(url=endpoint_url)
-        
-    pass
 
 
 class CommerceListings(BaseAPIv2Object):
