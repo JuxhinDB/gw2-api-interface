@@ -153,11 +153,41 @@ class CommerceExchange(BaseAPIv2Object):
 
 
 class CommerceExchangeCoins(BaseAPIv2Object):
-    pass
+    """Returns the current coins to gems exchange rate"""
+
+    def get(self, quantity):
+        """Returns the current coins to gems exchange rate
+        
+        Args:
+            quantity: The number of coins to convert to gems
+
+        Returns:
+            The JSON response
+        """ 
+        
+        endpoint_url = self._build_endpoint_base_url()
+        endpoint_url += "?quantity=" + str(quantity)
+
+        return super().get(url=endpoint_url)
 
 
 class CommerceExchangeGems(BaseAPIv2Object):
-    pass
+    """Returns the current gems to coins exchange rate"""
+
+    def get(self, quantity):
+        """Returns the current gems to coins exchange rate
+        
+        Args:
+            quantity: The number of gems to convert to coins
+
+        Returns:
+            The JSON response
+        """ 
+
+        endpoint_url = self._build_endpoint_base_url()
+        endpoint_url += "?quantity=" + str(quantity)
+
+        return super().get(url=endpoint_url)
 
 
 class CommerceListings(BaseAPIv2Object):
