@@ -316,7 +316,7 @@ def test_continents_inappropriate_multi_id(gw2_client):
 def test_continents_backwards_compatibility(gw2_client, mock_adapter):
     """This test assures that the new changes to introduce all sub parts of
     the continents API does not break the old behaviour, that is accessing
-    the continents via id= and ids=.
+    the continents via id=.
 
     Args:
         gw2_client: The pytest "gw2_client" fixture.
@@ -335,5 +335,16 @@ def test_continents_backwards_compatibility(gw2_client, mock_adapter):
     expected_single_id = load_mock_json('continents2')
     assert gw2_client.continents.get(id=2) == expected_single_id, '/continents?id=2 failed'
 
+
+def test_continents_backwards_compatibility_ids(gw2_client, mock_adapter):
+    """This test assures that the new changes to introduce all sub parts of
+    the continents API does not break the old behaviour, that is accessing
+    the continents via ids=.
+
+    Args:
+        gw2_client: The pytest "gw2_client" fixture.
+        mock_adapter: The pytest "mock_adapter" fixture.
+    """
+    register_urls_to_files(mock_adapter, {'continents?ids=1,2': 'continents1_2'})
     expected_multi_id = load_mock_json('continents1_2')
     assert gw2_client.continents.get(ids=[1, 2]) == expected_multi_id, '/continents?ids=1,2 failed'
