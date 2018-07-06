@@ -1,9 +1,10 @@
 """
-Tests functionality of conversion rate API for version 2
+Tests functionality of commerce API for version 2
 """
 
 import inspect
 import functools
+import json
 import os
 import pathlib
 import pytest
@@ -63,6 +64,56 @@ def test_coins_to_gems(gw2_client, mock_adapter):
     # }
     assert result["coins_per_gem"] == 1841 
     assert result["quantity"] == 184134
+
+
+def test_transactions(gw2_client, mock_adapter):
+    """Tests transactions API for account, both past and current
+
+    Args:
+        gw2_client: The pytest "gw2_client fixture.
+    """
+
+    register_urls_to_files(
+        mock_adapter,
+        {
+            "commerce/transactions": "commerce_transactions",
+            "commerce/transactions/history": "commerce_transactions_secondlevel",
+            "commerce/transactions/current": "commerce_transactions_secondlevel",
+            "commerce/transactions/history/buys": "commerce_historybuys",
+            "commerce/transactions/history/sells": "commerce_historysells",
+            "commerce/transactions/current/buys": "commerce_currentbuys",
+            "commerce/transactions/current/sells": "commerce_currentsells"
+        })
+
+    # get list of second-level endpoints
+    result = gw2_client.commercetransactions.get()
+    assert all(["current" in result, "history" in result])
+
+    # get list of third-level endpoints
+    result = gw2_client.commercetransactions.history.get()
+    assert all(["buys" in result, "sells" in result])
+    result = gw2_client.commercetransactions.current.get()
+    assert all(["buys" in result, "sells" in result])
+
+    # get transaction buy history
+    expected = load_mock_json("commerce_historybuys")
+    result = gw2_client.commercetransactions.history.buys.get()
+    assert result == expected
+
+    # get transaction sell history
+    expected = load_mock_json("commerce_historysells")
+    result = gw2_client.commercetransactions.history.sells.get()
+    assert result == expected
+
+    # get transaction current buys
+    expected = load_mock_json("commerce_currentbuys")
+    result = gw2_client.commercetransactions.current.buys.get()
+    assert result == expected
+
+    # get transaction current sells
+    expected = load_mock_json("commerce_currentsells")
+    result = gw2_client.commercetransactions.current.sells.get()
+    assert result == expected
 
 
 
@@ -144,7 +195,7 @@ def gw2_client(mock_adapter):
     Returns:
         A GuildWars2Client instance with a mock session.
     """
-    gw2_client = GuildWars2Client()
+    gw2_client = GuildWars2Client(api_key = "empty-api-key")
     gw2_client.session.mount('https://', mock_adapter)
     return gw2_client
 
