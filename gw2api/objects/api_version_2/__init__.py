@@ -199,7 +199,45 @@ class CommercePrices(BaseAPIv2Object):
 
 
 class CommerceTransactions(BaseAPIv2Object):
-    pass
+    """Returns information on an account's past and current trading post transactions"""
+    @property
+    def session(self):
+        return self._session
+
+    @session.setter
+    def session(self, val):
+        self._session = val
+        self.history.session = val
+        self.current.session = val
+        self.history.buys.session = val
+        self.history.sells.session = val        
+        self.current.buys.session = val
+        self.current.sells.session = val
+
+    def __init__(self, object_type):
+        """
+        Initializes a CommerceTransactions API object. See BaseAPIObject's __init__ documentation
+
+        :param object_type: String indicating what type of object to
+                             interface with (i.e. 'guild'). Primarily
+                             acts as the relative path to the base URL
+        :raises ValueError: In the event that either a `Session` object
+                             or `object_type` are not set.
+        """
+
+        self._session = None
+
+        # create second-level endpoints
+        self.history = BaseAPIv2Object(object_type + "/history")
+        self.current = BaseAPIv2Object(object_type + "/current")
+
+        # create third-level endpoints
+        self.history.buys = BaseAPIv2Object(self.history.object_type + "/buys")
+        self.history.sells = BaseAPIv2Object(self.history.object_type + "/sells")
+        self.current.buys = BaseAPIv2Object(self.current.object_type + "/buys")
+        self.current.sells = BaseAPIv2Object(self.current.object_type + "/sells")
+
+        super().__init__(object_type)
 
 
 class Continents(BaseAPIv2Object):
