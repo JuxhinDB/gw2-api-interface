@@ -24,11 +24,23 @@ class AccountBank(BaseAPIv2Object):
     pass
 
 
+class AccountBuildStorage(BaseAPIv2Object):
+    pass
+
+
+class AccountDailyCrafting(BaseAPIv2Object):
+    pass
+
+
 class AccountDungeons(BaseAPIv2Object):
     pass
 
 
 class AccountDyes(BaseAPIv2Object):
+    pass
+
+
+class AccountEmote(BaseAPIv2Object):
     pass
 
 
@@ -52,7 +64,15 @@ class AccountInventory(BaseAPIv2Object):
     pass
 
 
+class AccountLuck(BaseAPIv2Object):
+    pass
+
+
 class AccountMailCarriers(BaseAPIv2Object):
+    pass
+
+
+class AccountMapChests(BaseAPIv2Object):
     pass
 
 
@@ -68,7 +88,19 @@ class AccountMaterials(BaseAPIv2Object):
     pass
 
 
+class AccountMountsSkins(BaseAPIv2Object):
+    pass
+
+
+class AccountMountsTypes(BaseAPIv2Object):
+    pass
+
+
 class AccountMinis(BaseAPIv2Object):
+    pass
+
+
+class AccountNovelties(BaseAPIv2Object):
     pass
 
 
@@ -97,6 +129,10 @@ class AccountTitles(BaseAPIv2Object):
 
 
 class AccountWallet(BaseAPIv2Object):
+    pass
+
+
+class AccountWorldBosses(BaseAPIv2Object):
     pass
 
 
@@ -137,6 +173,78 @@ class Cats(BaseAPIv2Object):
 
 
 class Characters(BaseAPIv2Object):
+    pass
+
+
+class CharactersBackstory(BaseAPIv2Object):
+    pass
+
+
+class CharactersBuildTabs(BaseAPIv2Object):
+    pass
+
+
+class CharactersBuildTabsActive(BaseAPIv2Object):
+    pass
+
+
+class CharactersCore(BaseAPIv2Object):
+    pass
+
+
+class CharactersCrafting(BaseAPIv2Object):
+    pass
+
+
+class CharactersDungeons(BaseAPIv2Object):
+    pass
+
+
+class CharactersEquipment(BaseAPIv2Object):
+    pass
+
+
+class CharactersEquipmentTabs(BaseAPIv2Object):
+    pass
+
+
+class CharactersEquipmentTabsActive(BaseAPIv2Object):
+    pass
+
+
+class CharactersHeroPoints(BaseAPIv2Object):
+    pass
+
+
+class CharactersInventory(BaseAPIv2Object):
+    pass
+
+
+class CharactersQuests(BaseAPIv2Object):
+    pass
+
+
+class CharactersRecipes(BaseAPIv2Object):
+    pass
+
+
+class CharactersSab(BaseAPIv2Object):
+    pass
+
+
+class CharactersSkills(BaseAPIv2Object):
+    pass
+
+
+class CharactersSpecialization(BaseAPIv2Object):
+    pass
+
+
+class CharactersTraining(BaseAPIv2Object):
+    pass
+
+
+class CreateSubToken(BaseAPIv2Object):
     pass
 
 
@@ -363,11 +471,27 @@ class Currencies(BaseAPIv2Object):
     pass
 
 
+class DailyCrafting(BaseAPIv2Object):
+    pass
+
+
 class Dungeons(BaseAPIv2Object):
     pass
 
 
 class Emblem(BaseAPIv2Object):
+    pass
+
+
+class EmblemBackgrounds(BaseAPIv2Object):
+    pass
+
+
+class EmblemForegrounds(BaseAPIv2Object):
+    pass
+
+
+class Emotes(BaseAPIv2Object):
     pass
 
 
@@ -428,6 +552,15 @@ class GuildIdStash(BaseAPIv2Object):
         return super().get(url=endpoint_url)
 
 
+class GuildIdStorage(BaseAPIv2Object):
+
+    def get(self, id, **kwargs):
+        endpoint_url = self._build_endpoint_base_url()
+        endpoint_url = endpoint_url.replace(':id', id)
+
+        return super().get(url=endpoint_url)
+
+
 class GuildIdTeams(BaseAPIv2Object):
 
     def get(self, id, **kwargs):
@@ -472,6 +605,14 @@ class GuildUpgrades(BaseAPIv2Object):
     pass
 
 
+class HomeCats(BaseAPIv2Object):
+    pass
+
+
+class HomeNodes(BaseAPIv2Object):
+    pass
+
+
 class Items(BaseAPIv2Object):
     pass
 
@@ -492,6 +633,10 @@ class Maps(BaseAPIv2Object):
     pass
 
 
+class MapChests(BaseAPIv2Object):
+    pass
+
+
 class Masteries(BaseAPIv2Object):
     pass
 
@@ -504,7 +649,19 @@ class Minis(BaseAPIv2Object):
     pass
 
 
+class MountSkins(BaseAPIv2Object):
+    pass
+
+
+class MountTypes(BaseAPIv2Object):
+    pass
+
+
 class Nodes(BaseAPIv2Object):
+    pass
+
+
+class Novelties(BaseAPIv2Object):
     pass
 
 
@@ -557,6 +714,10 @@ class PvPStats(BaseAPIv2Object):
 
 
 class Quaggans(BaseAPIv2Object):
+    pass
+
+
+class Quests(BaseAPIv2Object):
     pass
 
 
@@ -620,6 +781,10 @@ class Traits(BaseAPIv2Object):
     pass
 
 
+class WorldBosses(BaseAPIv2Object):
+    pass
+
+
 class Worlds(BaseAPIv2Object):
     pass
 
@@ -633,6 +798,22 @@ class WvwAbilities(BaseAPIv2Object):
 
 
 class WvwMatches(BaseAPIv2Object):
+    pass
+
+
+class WvwMatchesOverview(BaseAPIv2Object):
+    pass
+
+
+class WvwMatchesScores(BaseAPIv2Object):
+    pass
+
+
+class WvwMatchesStats(BaseAPIv2Object):
+    pass
+
+
+class WvwMatchesStatsGuilds(BaseAPIv2Object):
     pass
 
 
@@ -655,18 +836,26 @@ class WvwUpgrades(BaseAPIv2Object):
 API_OBJECTS = [Account('account'),
                AccountAchievements('account/achievements'),
                AccountBank('account/bank'),
+               AccountBuildStorage('account/buildstorage'),
+               AccountDailyCrafting('account/dailycrafting'),
                AccountDungeons('account/dungeons'),
                AccountDyes('account/dyes'),
+               AccountEmote('account/emotes'),
                AccountFinishers('account/finishers'),
                AccountGliders('account/gliders'),
                AccountHomeCats('account/home/cats'),
                AccountHomeNodes('account/home/nodes'),
                AccountInventory('account/inventory'),
+               AccountLuck('account/luck'),
                AccountMailCarriers('account/mailcarriers'),
+               AccountMapChests('account/mapchests'),
                AccountMasteries('account/masteries'),
                AccountMasteryPoints('account/mastery/points'),
                AccountMaterials('account/materials'),
                AccountMinis('account/minis'),
+               AccountMountsSkins('account/mounts/skins'),
+               AccountMountsTypes('account/mounts/types'),
+               AccountNovelties('account/novelties'),
                AccountOutfits('account/outfits'),
                AccountPvPHeroes('account/pvp/heroes'),
                AccountRaids('account/raids'),
@@ -674,6 +863,7 @@ API_OBJECTS = [Account('account'),
                AccountSkins('account/skins'),
                AccountTitles('account/titles'),
                AccountWallet('account/wallet'),
+               AccountWorldBosses('account/worldbosses'),
                Achievements('achievements'),
                AchievementsCategories('achievements/categories'),
                AchievementsDaily('achievements/daily'),
@@ -684,6 +874,23 @@ API_OBJECTS = [Account('account'),
                Build('build'),
                Cats('cats'),
                Characters('characters'),
+               CharactersBackstory('characters/:id/backstory'),
+               CharactersBuildTabs('characters/:id/buildtabs'),
+               CharactersBuildTabsActive('characters/:id/buildtabs/active'),
+               CharactersCore('characters/:id/core'),
+               CharactersCrafting('characters/:id/crafting'),
+               CharactersDungeons('characters/:id/dungeons'),
+               CharactersEquipment('characters/:id/equipment'),
+               CharactersEquipmentTabs('characters/:id/equipmenttabs'),
+               CharactersEquipmentTabsActive('characters/:id/equipmenttabs/active'),
+               CharactersHeroPoints('characters/:id/heropoints'),
+               CharactersInventory('characters/:id/inventory'),
+               CharactersQuests('characters/:id/quests'),
+               CharactersRecipes('characters/:id/recipes'),
+               CharactersSab('characters/:id/sab'),
+               CharactersSkills('characters/:id/skills'),
+               CharactersSpecialization('characters/:id/specializations'),
+               CharactersTraining('characters/:id/training'),
                Colors('colors'),
                CommerceDelivery('commerce/delivery'),
                CommerceExchange('commerce/exchange'),
@@ -693,9 +900,14 @@ API_OBJECTS = [Account('account'),
                CommercePrices('commerce/prices'),
                CommerceTransactions('commerce/transactions'),
                Continents('continents'),
+               CreateSubToken('createsubtokens'),
                Currencies('currencies'),
+               DailyCrafting('dailycrafting'),
                Dungeons('dungeons'),
                Emblem('emblem'),
+               EmblemBackgrounds('emblem/backgrounds'),
+               EmblemForegrounds('emblem/foregrounds'),
+               Emotes('emotes'),
                Files('files'),
                Finishers('finishers'),
                Gliders('gliders'),
@@ -704,21 +916,28 @@ API_OBJECTS = [Account('account'),
                GuildIdMembers('guild/:id/members'),
                GuildIdRanks('guild/:id/ranks'),
                GuildIdStash('guild/:id/stash'),
+               GuildIdStorage('guild/:id/storage'),
                GuildIdTeams('guild/:id/teams'),
                GuildIdTreasury('guild/:id/treasury'),
                GuildIdUpgrades('guild/:id/upgrades'),
                GuildPermissions('guild/permissions'),
                GuildSearch('guild/search'),
                GuildUpgrades('guild/upgrades'),
+               HomeCats('home/cats'),
+               HomeNodes('home/nodes'),
                Items('items'),
                ItemStats('itemstats'),
                Legends('legends'),
                MailCarriers('mailcarriers'),
+               MapChests('mapchests'),
                Maps('maps'),
                Masteries('masteries'),
                Materials('materials'),
                Minis('minis'),
+               MountSkins('mounts/skins'),
+               MountTypes('mounts/types'),
                Nodes('nodes'),
+               Novelties('novelties'),
                Outfits('outfits'),
                Pets('pets'),
                Professions('professions'),
@@ -732,6 +951,7 @@ API_OBJECTS = [Account('account'),
                PvPStandings('pvp/standings'),
                PvPStats('pvp/stats'),
                Quaggans('quaggans'),
+               Quests('quests'),
                Races('races'),
                Raids('raids'),
                Recipes('recipes'),
@@ -744,10 +964,15 @@ API_OBJECTS = [Account('account'),
                Titles('titles'),
                Tokeninfo('tokeninfo'),
                Traits('traits'),
+               WorldBosses('worldbosses'),
                Worlds('worlds'),
                Wvw('wvw'),
                WvwAbilities('wvw/abilities'),
                WvwMatches('wvw/matches'),
+               WvwMatchesOverview('wvw/matches/overview'),
+               WvwMatchesScores('wvw/matches/scores'),
+               WvwMatchesStats('wvw/matches/stats'),
+               WvwMatchesStatsGuilds('wvw/matches/stats/guilds'),
                WvwMatchesStatsTeams('wvw/matches/stats/teams'),
                WvwObjectives('wvw/objectives'),
                WvwRanks('wvw/ranks'),
