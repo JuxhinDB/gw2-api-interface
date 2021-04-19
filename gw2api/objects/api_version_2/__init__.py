@@ -475,10 +475,6 @@ class DailyCrafting(BaseAPIv2Object):
     pass
 
 
-class Dungeons(BaseAPIv2Object):
-    pass
-
-
 class Emblem(BaseAPIv2Object):
     pass
 
@@ -649,11 +645,11 @@ class Minis(BaseAPIv2Object):
     pass
 
 
-class MountSkins(BaseAPIv2Object):
+class MountsSkins(BaseAPIv2Object):
     pass
 
 
-class MountTypes(BaseAPIv2Object):
+class MountsTypes(BaseAPIv2Object):
     pass
 
 
@@ -903,7 +899,6 @@ API_OBJECTS = [Account('account'),
                CreateSubToken('createsubtokens'),
                Currencies('currencies'),
                DailyCrafting('dailycrafting'),
-               Dungeons('dungeons'),
                Emblem('emblem'),
                EmblemBackgrounds('emblem/backgrounds'),
                EmblemForegrounds('emblem/foregrounds'),
@@ -934,8 +929,8 @@ API_OBJECTS = [Account('account'),
                Masteries('masteries'),
                Materials('materials'),
                Minis('minis'),
-               MountSkins('mounts/skins'),
-               MountTypes('mounts/types'),
+               MountsSkins('mounts/skins'),
+               MountsTypes('mounts/types'),
                Nodes('nodes'),
                Novelties('novelties'),
                Outfits('outfits'),

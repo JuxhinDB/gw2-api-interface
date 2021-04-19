@@ -9,18 +9,26 @@
 - Account
     - Achievements
     - Bank
+    - Build Storage
+    - Daily Crafting
     - Dungeons
     - Dyes
+    - Emotes
     - Finishers
     - Gliders
     - Home Cats
     - Home Nodes
     - Inventory
+    - Luck
     - Mailcarriers
+    - Map Chests
     - Masteries
     - Mastery Points
     - Materials
     - Minis
+    - Mounts Skins
+    - Mounts Types
+    - Novelties
     - Outfits
     - Pvp Heroes
     - Raids
@@ -28,6 +36,7 @@
     - Skins
     - Titles
     - Wallet
+    - World Bosses
 - Achievements
     - Categories
     - Daily
@@ -38,6 +47,22 @@
 - Build
 - Cats
 - Characters
+    - Backstory
+    - Build Tabs
+    - Build Tabs Active
+    - Core
+    - Crafting
+    - Equipment
+    - Equipment Tabs
+    - Equipment Tabs Active
+    - Hero Points
+    - Inventory
+    - Quests
+    - Recipes
+    - Sab
+    - Skills
+    - Specializations
+    - Training
 - Colors
 - Commerce
     - Delivery
@@ -48,9 +73,14 @@
     - Prices
     - Transactions
 - Continents
+- Create Sub Token
 - Currencies
+- Daily Crafting
 - Dungeons
 - Emblem
+    - Backgrounds
+    - Foregrounds
+- Emotes
 - Files
 - Finishers
 - Gliders
@@ -59,6 +89,7 @@
     - Members
     - Ranks
     - Stash
+    - Storage
     - Teams
     - Treasury
     - Upgrades
@@ -66,15 +97,21 @@
     - Permissions
     - Search
     - Upgrades
+- Home Cats
+- Home Nodes
 - Items
 - Itemstats
 - Legends
 - Mailcarriers
+- Map Chests
 - Maps
 - Masteries
 - Materials
 - Minis
+- Mounts Skins
+- Mounts Types
 - Nodes
+- Novelties
 - Outfits
 - Pets
 - Professions
@@ -88,6 +125,7 @@
     - Standings
     - Stats
 - Quaggans
+- Quests
 - Races
 - Raids
 - Recipes
@@ -100,10 +138,15 @@
 - Titles
 - Tokeninfo
 - Traits
+- World Bosses
 - Worlds
 - WvW
     - Abilities
     - Matches
+    - Matches Overview
+    - Matches Scores
+    - Matches Stats
+    - Matches Stats Guilds
     - Matches Stats Teams
     - Objectives
     - Ranks
