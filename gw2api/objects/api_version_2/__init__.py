@@ -13,250 +13,462 @@ class BaseAPIv2Object(BaseAPIObject):
 
 
 class Account(BaseAPIv2Object):
+    """
+        This returns information about the player's account.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class AccountAchievements(BaseAPIv2Object):
+    """
+        This returns information about the player's progress on achievements.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class AccountBank(BaseAPIv2Object):
+    """
+        This returns the items stored in a player's vault.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class AccountBuildStorage(BaseAPIv2Object):
+    """
+         This returns the templates stored in a player's build storage.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountDailyCrafting(BaseAPIv2Object):
+    """
+         This returns information about time-gated recipes that have been crafted by the account since daily-reset.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountDungeons(BaseAPIv2Object):
+    """
+         This resource returns the dungeons completed since daily dungeon reset.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountDyes(BaseAPIv2Object):
+    """
+         This returns the unlocked dyes of the account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountEmote(BaseAPIv2Object):
+    """
+         This returns the player's unlocked emotes.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountFinishers(BaseAPIv2Object):
+    """
+         This returns information about finishers that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountGliders(BaseAPIv2Object):
+    """
+         This returns information about gliders that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountHomeCats(BaseAPIv2Object):
+    """
+         This returns information about unlocked home instance cats.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountHomeNodes(BaseAPIv2Object):
+    """
+         This returns information about unlocked home instance nodes.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountInventory(BaseAPIv2Object):
+    """
+         This returns the shared inventory slots in an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountLuck(BaseAPIv2Object):
+    """
+         This returns the total amount of luck consumed on an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMailCarriers(BaseAPIv2Object):
+    """
+         This returns information about mail carriers that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMapChests(BaseAPIv2Object):
+    """
+         This returns information about Hero's Choice Chests acquired by the account since daily-reset.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMasteries(BaseAPIv2Object):
+    """
+         This returns information about masteries that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMasteryPoints(BaseAPIv2Object):
+    """
+         This returns information about the total amount of masteries that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMaterials(BaseAPIv2Object):
-    pass
-
-
-class AccountMountsSkins(BaseAPIv2Object):
-    pass
-
-
-class AccountMountsTypes(BaseAPIv2Object):
+    """
+         This returns the materials stored in a player's vault.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountMinis(BaseAPIv2Object):
+    """
+         This returns the unlocked miniatures of the account.
+         Authenticated Endpoint.
+     """
     pass
 
 
+class AccountMountsSkins(BaseAPIv2Object):
+    """
+         This returns the unlocked mount skins of the account.
+         Authenticated Endpoint.
+     """
+    pass
+
+
+class AccountMountsTypes(BaseAPIv2Object):
+    """
+         This returns the unlocked mounts of the account.
+         Authenticated Endpoint.
+     """
+    pass
+
+
+
 class AccountNovelties(BaseAPIv2Object):
+    """
+         This returns information about novelties that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountOutfits(BaseAPIv2Object):
+    """
+         This returns information about outfits that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountPvPHeroes(BaseAPIv2Object):
+    """
+         This returns information about pvp heroes that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountRaids(BaseAPIv2Object):
+    """
+         This returns the completed raid encounters since weekly raid reset.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountRecipes(BaseAPIv2Object):
+    """
+         This returns information about recipes that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountSkins(BaseAPIv2Object):
+    """
+         This returns the unlocked skins of the account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountTitles(BaseAPIv2Object):
+    """
+         This returns information about titles that are unlocked for an account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountWallet(BaseAPIv2Object):
+    """
+         This returns the currencies of the account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class AccountWorldBosses(BaseAPIv2Object):
+    """
+         This returns information about which world bosses have been killed by the account since daily-reset.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class Achievements(BaseAPIv2Object):
+    """
+        This returns all achievements in the game, including localized names and icons.
+    """
     pass
 
 
 class AchievementsCategories(BaseAPIv2Object):
+    """
+        This returns all the categories for achievements.
+    """
     pass
 
 
 class AchievementsDaily(BaseAPIv2Object):
+    """
+        This returns the current set of daily achievements.
+    """
     pass
 
 
 class AchievementsDailyTomorrow(BaseAPIv2Object):
+    """
+        This returns the next set of daily achievements.
+    """
     pass
 
 
 class AchievementsGroups(BaseAPIv2Object):
+    """
+        This returns all the top-level groups for achievements.
+    """
     pass
 
 
 class BackstoryAnswers(BaseAPIv2Object):
+    """
+        This returns information about the Biography answers that are in the game.
+    """
     pass
 
 
 class BackstoryQuestions(BaseAPIv2Object):
+    """
+        This returns information about the Biography questions that are in the game.
+    """
     pass
 
 
 class Build(BaseAPIv2Object):
-    pass
-
-
-class Cats(BaseAPIv2Object):
+    """
+        This returns the current build id of the game.
+    """
     pass
 
 
 class Characters(BaseAPIv2Object):
+    """
+         This returns information about characters attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersBackstory(BaseAPIv2Object):
+    """
+         This returns information about the backstory of a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersBuildTabs(BaseAPIv2Object):
+    """
+         This returns information about an accounts build template tabs.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersBuildTabsActive(BaseAPIv2Object):
+    """
+         This returns information about an accounts build template tabs.
+         Only those flagged True in is_active are returned.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersCore(BaseAPIv2Object):
+    """
+         This returns core information about a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersCrafting(BaseAPIv2Object):
-    pass
-
-
-class CharactersDungeons(BaseAPIv2Object):
+    """
+         This returns information about the crafting disciplines available
+         to a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersEquipment(BaseAPIv2Object):
+    """
+         This returns information about the equipment on a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersEquipmentTabs(BaseAPIv2Object):
+    """
+         This returns information about an accounts equipment template tabs.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersEquipmentTabsActive(BaseAPIv2Object):
+    """
+         This returns information about an accounts equipment template tabs.
+         Only those flagged True in is_active are returned.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersHeroPoints(BaseAPIv2Object):
+    """
+         This returns information about the hero points obtained by a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersInventory(BaseAPIv2Object):
+    """
+         This returns information about the inventory of a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersQuests(BaseAPIv2Object):
+    """
+         This returns information about the quests selected that by a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersRecipes(BaseAPIv2Object):
+    """
+         This returns information about recipes that the given character can use.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersSab(BaseAPIv2Object):
+    """
+         This returns information about Super Adventure Box on a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersSkills(BaseAPIv2Object):
+    """
+         This returns information about the skills equipped on a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersSpecialization(BaseAPIv2Object):
+    """
+         This returns information about the specializations equipped on a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
 
 class CharactersTraining(BaseAPIv2Object):
+    """
+         This returns information about the training of a character attached to a specific account.
+         Authenticated Endpoint.
+     """
     pass
 
-
-class CreateSubToken(BaseAPIv2Object):
-    pass
 
 
 class Colors(BaseAPIv2Object):
+    """
+         This returns all dye colors in the game, including localized names and their color component information.
+     """
     pass
 
 
 class CommerceDelivery(BaseAPIv2Object):
-    pass
-
-
-class CommerceExchange(BaseAPIv2Object):
+    """
+         This provides access to the current items and coins available for pickup on this account.
+         Authenticated Endpoint.
+     """
     pass
 
 
@@ -299,10 +511,16 @@ class CommerceExchangeGems(BaseAPIv2Object):
 
 
 class CommerceListings(BaseAPIv2Object):
+    """
+         This returns current buy and sell listings from the trading post.
+     """
     pass
 
 
 class CommercePrices(BaseAPIv2Object):
+    """
+         This returns current aggregated buy and sell listing information from the trading post.
+     """
     pass
 
 
@@ -349,7 +567,10 @@ class CommerceTransactions(BaseAPIv2Object):
 
 
 class Continents(BaseAPIv2Object):
-
+    """
+        This returns static information about the
+        continents, floors, regions, maps, sectors, points of interest and tasks.
+    """
     def _validate_kwargs(self, **kwargs):
         """Validates the keyword arguments.
 
@@ -467,45 +688,93 @@ class Continents(BaseAPIv2Object):
         return super().get(url=request_url)
 
 
+class CreateSubToken(BaseAPIv2Object):
+    """
+        This allows for the creation of Subtokens; essentially API keys with a more limited set of permissions,
+        which can be used as a substitute for them.
+        Authenticated Endpoint.
+    """
+    pass
+
+
 class Currencies(BaseAPIv2Object):
+    """
+        This returns a list of the currencies contained in the account wallet.
+    """
     pass
 
 
 class DailyCrafting(BaseAPIv2Object):
+    """
+        This returns information about time-gated recipes that can be crafted in-game.
+    """
     pass
 
 
-class Emblem(BaseAPIv2Object):
+class Dungeons(BaseAPIv2Object):
+    """
+        This returns details about each dungeon and it's associated paths.
+    """
     pass
 
 
 class EmblemBackgrounds(BaseAPIv2Object):
+    """
+        This returns image resources that are needed to render the background of guild emblems.
+    """
     pass
 
 
 class EmblemForegrounds(BaseAPIv2Object):
+    """
+        This returns image resources that are needed to render the foreground of guild emblems.
+    """
     pass
 
 
 class Emotes(BaseAPIv2Object):
+    """
+        This returns information about unlockable emotes.
+    """
     pass
 
 
 class Files(BaseAPIv2Object):
+    """
+        This returns commonly requested in-game assets that may be used to enhance API-derived applications.
+    """
     pass
 
 
 class Finishers(BaseAPIv2Object):
+    """
+        This returns information about finishers that are available in-game.
+    """
     pass
 
 
 class Gliders(BaseAPIv2Object):
+    """
+        This returns information about gliders that are available in-game.
+    """
     pass
 
 
 class GuildId(BaseAPIv2Object):
-
+    """
+        This returns core details about a given guild.
+        The end point will include more or less fields dependend on whether or not an API Key of a
+        Leader or Member of the Guild with the guilds scope is included in the Request.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                **kwargs
+                    id = int, the id of the guild to add to the endpoint
+        """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -513,8 +782,19 @@ class GuildId(BaseAPIv2Object):
 
 
 class GuildIdLog(BaseAPIv2Object):
-
+    """
+        This returns information about certain events in a guild's log.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -522,8 +802,19 @@ class GuildIdLog(BaseAPIv2Object):
 
 
 class GuildIdMembers(BaseAPIv2Object):
-
+    """
+        This returns information about the members of a specified guild.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -531,8 +822,19 @@ class GuildIdMembers(BaseAPIv2Object):
 
 
 class GuildIdRanks(BaseAPIv2Object):
-
+    """
+        This returns information about the ranks of a specified guild.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -540,8 +842,19 @@ class GuildIdRanks(BaseAPIv2Object):
 
 
 class GuildIdStash(BaseAPIv2Object):
-
+    """
+        This returns information about the items in a guild's vault.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -549,8 +862,19 @@ class GuildIdStash(BaseAPIv2Object):
 
 
 class GuildIdStorage(BaseAPIv2Object):
-
+    """
+        This returns information about the items in a guild's storage.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -558,8 +882,19 @@ class GuildIdStorage(BaseAPIv2Object):
 
 
 class GuildIdTeams(BaseAPIv2Object):
-
+    """
+        This returns information about the teams in a guild.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -567,8 +902,19 @@ class GuildIdTeams(BaseAPIv2Object):
 
 
 class GuildIdTreasury(BaseAPIv2Object):
-
+    """
+        This returns information about the items in a guild's treasury.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -576,8 +922,19 @@ class GuildIdTreasury(BaseAPIv2Object):
 
 
 class GuildIdUpgrades(BaseAPIv2Object):
-
+    """
+        This returns information about the guild's upgrades.
+        The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
+        Authenticated Endpoint.
+    """
     def get(self, id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', id)
 
@@ -585,12 +942,24 @@ class GuildIdUpgrades(BaseAPIv2Object):
 
 
 class GuildPermissions(BaseAPIv2Object):
+    """
+        This resource returns information about all guild permissions.
+    """
     pass
 
 
 class GuildSearch(BaseAPIv2Object):
-
+    """
+        The endpoint an array, each value being a string of the guild id for the given name.
+    """
     def get(self, name, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 **kwargs
+                     id = int, the id of the guild to add to the endpoint
+         """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url += '?name={name}'.format(name=name)
 
@@ -598,140 +967,242 @@ class GuildSearch(BaseAPIv2Object):
 
 
 class GuildUpgrades(BaseAPIv2Object):
+    """
+        This returns information about all available Guild Hall upgrades, including scribe decorations.
+    """
     pass
 
 
 class HomeCats(BaseAPIv2Object):
+    """
+        This returns an array of ids for cats available for the home instance.
+    """
     pass
 
 
 class HomeNodes(BaseAPIv2Object):
+    """
+        This returns an array of ids for all currently available home instance nodes.
+    """
     pass
 
 
 class Items(BaseAPIv2Object):
+    """
+        This returns information about items that were discovered by players in the game.
+    """
     pass
 
 
 class ItemStats(BaseAPIv2Object):
+    """
+        This returns information about itemstats for items that are in the game.
+    """
     pass
 
 
 class Legends(BaseAPIv2Object):
+    """
+        This returns information about the Revenant Legends that are in the game.
+    """
     pass
 
 
 class MailCarriers(BaseAPIv2Object):
-    pass
-
-
-class Maps(BaseAPIv2Object):
+    """
+        This returns information about mail carriers that are available in-game.
+    """
     pass
 
 
 class MapChests(BaseAPIv2Object):
+    """
+        This returns information about Hero's Choice Chests that can be be acquired once a day in-game.
+    """
+    pass
+
+
+class Maps(BaseAPIv2Object):
+    """
+        This resource returns details about maps in the game, including details about
+        floor and translation data on how to translate between world coordinates and map coordinates.
+    """
     pass
 
 
 class Masteries(BaseAPIv2Object):
+    """
+        This returns information about masteries that are available in-game.
+    """
     pass
 
 
 class Materials(BaseAPIv2Object):
+    """
+        This returns information about the categories in material storage.
+    """
     pass
 
 
 class Minis(BaseAPIv2Object):
+    """
+        This returns all minis in the game.
+    """
     pass
 
 
 class MountsSkins(BaseAPIv2Object):
+    """
+        This returns information about mount skins that are available in-game.
+    """
     pass
 
 
 class MountsTypes(BaseAPIv2Object):
-    pass
-
-
-class Nodes(BaseAPIv2Object):
+    """
+        This returns information about mount types that are available in-game.
+    """
     pass
 
 
 class Novelties(BaseAPIv2Object):
+    """
+        This returns information about novelties that are available in-game.
+    """
     pass
 
 
 class Outfits(BaseAPIv2Object):
+    """
+        This returns information about the outfits that are in the game.
+    """
     pass
 
 
 class Pets(BaseAPIv2Object):
+    """
+        This returns information about the Ranger pets that are in the game.
+    """
     pass
 
 
 class Professions(BaseAPIv2Object):
-    pass
-
-
-class PvP(BaseAPIv2Object):
+    """
+        This returns information about professions that are in the game.
+    """
     pass
 
 
 class PvPAmulets(BaseAPIv2Object):
+    """
+        This returns information about the PvP amulets that are in the game.
+    """
     pass
 
 
 class PvPGames(BaseAPIv2Object):
+    """
+        This returns information about past PvP matches the player has participated in.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class PvPHeroes(BaseAPIv2Object):
+    """
+        This returns information about pvp heroes that are available in-game.
+    """
     pass
 
 
 class PvPRanks(BaseAPIv2Object):
+    """
+        This information about the available ranks in the Player versus Player game mode.
+    """
     pass
 
 
 class PvPSeasons(BaseAPIv2Object):
+    """
+        This returns information about League seasons.
+    """
     pass
 
 
 class PvPSeasonsLeaderboards(BaseAPIv2Object):
+    """
+        This returns information about League season leaderboards for either NA or EU.
+    """
     pass
 
 
 class PvPStandings(BaseAPIv2Object):
+    """
+        This returns information about player pips.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class PvPStats(BaseAPIv2Object):
+    """
+        This returns information about wins and losses in the account's PvP matches.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class Quaggans(BaseAPIv2Object):
+    """
+          This returns quaggan images.
+      """
     pass
 
 
 class Quests(BaseAPIv2Object):
+    """
+          This resource returns information about Story Journal missions within the personal story and Living World.
+      """
     pass
 
 
 class Races(BaseAPIv2Object):
+    """
+          This returns information about the different playable races.
+      """
     pass
 
 
 class Raids(BaseAPIv2Object):
+    """
+          This returns details about each raid and it's associated wings.
+      """
     pass
 
 
 class Recipes(BaseAPIv2Object):
+    """
+          This returns information about recipes that were discovered by players in the game.
+      """
     pass
 
 
 class RecipesSearch(BaseAPIv2Object):
+    """
+          This allows searching for recipe.
+          To get additional information about the returned recipes, use the recipes endpoint.
+      """
 
     def get(self, **kwargs):
+        """
+            If either 'input' or 'output' is passed into **kwargs
+            , then append item id and the given param into the endpoint.
+        Args:
+            **kwargs: dict, dictionary of key word arguments.
+
+        Returns:
+            List of recipe ids that match the query.
+        """
         if any(key in ['input', 'output'] for key in kwargs):
             param = 'input' if 'input' in kwargs else 'output'
             item_id = kwargs.get(param)
@@ -746,86 +1217,117 @@ class RecipesSearch(BaseAPIv2Object):
 
 
 class Skills(BaseAPIv2Object):
+    """
+        This returns information about skills usable by players in the game.
+    """
     pass
 
 
 class Skins(BaseAPIv2Object):
+    """
+        This returns information about skins that were discovered by players in the game.
+    """
     pass
 
 
 class Specializations(BaseAPIv2Object):
+    """
+        This returns information on currently released specializations.
+    """
     pass
 
 
 class Stories(BaseAPIv2Object):
+    """
+        This returns information about the Story Journal stories; including the personal story and Living World.
+    """
     pass
 
 
 class StoriesSeasons(BaseAPIv2Object):
+    """
+        This returns information about the Story Journal story seasons; including the personal story and Living World.
+    """
     pass
 
 
 class Titles(BaseAPIv2Object):
+    """
+        This returns information about the titles that are in the game.
+    """
     pass
 
 
 class Tokeninfo(BaseAPIv2Object):
+    """
+        This resource returns information about the supplied API key.
+        Authenticated Endpoint.
+    """
     pass
 
 
 class Traits(BaseAPIv2Object):
+    """
+        This returns information about specific traits which are contained within specializations.
+    """
     pass
 
 
 class WorldBosses(BaseAPIv2Object):
+    """
+        This returns information about scheduled World bosses in Core Tyria that reward boss chests
+        that can be be opened once a day in-game.
+    """
     pass
 
 
 class Worlds(BaseAPIv2Object):
-    pass
-
-
-class Wvw(BaseAPIv2Object):
+    """
+        This returns information about the available worlds, or servers.
+    """
     pass
 
 
 class WvwAbilities(BaseAPIv2Object):
+    """
+        This returns information about the available abilities in the World versus World game mode.
+    """
     pass
 
 
 class WvwMatches(BaseAPIv2Object):
-    pass
-
-
-class WvwMatchesOverview(BaseAPIv2Object):
-    pass
-
-
-class WvwMatchesScores(BaseAPIv2Object):
-    pass
-
-
-class WvwMatchesStats(BaseAPIv2Object):
-    pass
-
-
-class WvwMatchesStatsGuilds(BaseAPIv2Object):
+    """
+        This returns further details about the specified match,
+        including the total score, kills and deaths, and further details for each map.
+    """
     pass
 
 
 class WvwMatchesStatsTeams(BaseAPIv2Object):
+    """
+        This returns specific details pertaining to guilds in the current selected matchup.
+    """
     pass
 
 
 class WvwObjectives(BaseAPIv2Object):
+    """
+        This returns details about World vs. World objectives such as camps, towers, and keeps.
+    """
     pass
 
 
 class WvwRanks(BaseAPIv2Object):
+    """
+        This returns information about the available ranks in the World versus World game mode.
+    """
     pass
 
 
 class WvwUpgrades(BaseAPIv2Object):
+    """
+        This returns details about available World vs. World upgrades for objectives such as camps, towers, and keeps.
+    """
     pass
 
 
@@ -868,14 +1370,12 @@ API_OBJECTS = [Account('account'),
                BackstoryAnswers('backstory/answers'),
                BackstoryQuestions('backstory/questions'),
                Build('build'),
-               Cats('cats'),
                Characters('characters'),
                CharactersBackstory('characters/:id/backstory'),
                CharactersBuildTabs('characters/:id/buildtabs'),
                CharactersBuildTabsActive('characters/:id/buildtabs/active'),
                CharactersCore('characters/:id/core'),
                CharactersCrafting('characters/:id/crafting'),
-               CharactersDungeons('characters/:id/dungeons'),
                CharactersEquipment('characters/:id/equipment'),
                CharactersEquipmentTabs('characters/:id/equipmenttabs'),
                CharactersEquipmentTabsActive('characters/:id/equipmenttabs/active'),
@@ -889,7 +1389,6 @@ API_OBJECTS = [Account('account'),
                CharactersTraining('characters/:id/training'),
                Colors('colors'),
                CommerceDelivery('commerce/delivery'),
-               CommerceExchange('commerce/exchange'),
                CommerceExchangeCoins('commerce/exchange/coins'),
                CommerceExchangeGems('commerce/exchange/gems'),
                CommerceListings('commerce/listings'),
@@ -899,7 +1398,7 @@ API_OBJECTS = [Account('account'),
                CreateSubToken('createsubtokens'),
                Currencies('currencies'),
                DailyCrafting('dailycrafting'),
-               Emblem('emblem'),
+               Dungeons('dungeons'),
                EmblemBackgrounds('emblem/backgrounds'),
                EmblemForegrounds('emblem/foregrounds'),
                Emotes('emotes'),
@@ -931,12 +1430,10 @@ API_OBJECTS = [Account('account'),
                Minis('minis'),
                MountsSkins('mounts/skins'),
                MountsTypes('mounts/types'),
-               Nodes('nodes'),
                Novelties('novelties'),
                Outfits('outfits'),
                Pets('pets'),
                Professions('professions'),
-               PvP('pvp'),
                PvPAmulets('pvp/amulets'),
                PvPGames('pvp/games'),
                PvPHeroes('pvp/heroes'),
@@ -961,13 +1458,8 @@ API_OBJECTS = [Account('account'),
                Traits('traits'),
                WorldBosses('worldbosses'),
                Worlds('worlds'),
-               Wvw('wvw'),
                WvwAbilities('wvw/abilities'),
                WvwMatches('wvw/matches'),
-               WvwMatchesOverview('wvw/matches/overview'),
-               WvwMatchesScores('wvw/matches/scores'),
-               WvwMatchesStats('wvw/matches/stats'),
-               WvwMatchesStatsGuilds('wvw/matches/stats/guilds'),
                WvwMatchesStatsTeams('wvw/matches/stats/teams'),
                WvwObjectives('wvw/objectives'),
                WvwRanks('wvw/ranks'),
