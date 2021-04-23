@@ -45,7 +45,6 @@
 - Backstory Answers
 - Backstory Questions
 - Build
-- Cats
 - Characters
     - Backstory
     - Build Tabs
@@ -143,10 +142,6 @@
 - WvW
     - Abilities
     - Matches
-    - Matches Overview
-    - Matches Scores
-    - Matches Stats
-    - Matches Stats Guilds
     - Matches Stats Teams
     - Objectives
     - Ranks

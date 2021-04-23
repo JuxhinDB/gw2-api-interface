@@ -150,7 +150,7 @@ def test_continents_single_id(gw2_client, mock_adapter):
         filename = ''.join(map(str, url_parts[:i+1]))
         url = '/'.join(map(str, url_parts[:i+1]))
         url_to_file[url] = filename
-    register_urls_to_files(mock_adapter, url_to_file)
+    utils.register_urls_to_files(mock_adapter, url_to_file)
 
     # Alternate between resource='all' and resource=fixed_id, appending
     # the deep levels to the flat levels:
@@ -166,7 +166,7 @@ def test_continents_single_id(gw2_client, mock_adapter):
         else:
             kwargs[url_parts[i - 1]] = url_parts[i]
 
-        expected = load_mock_json(''.join(map(str, url_parts[:i+1])))
+        expected = utils.load_mock_json(''.join(map(str, url_parts[:i+1])))
         actual = gw2_client.continents.get(**kwargs)
 
         assert actual == expected, 'Incorrect for ' + str(kwargs)
@@ -193,36 +193,36 @@ def test_continents_multi_id(gw2_client, mock_adapter):
         'continents/2/floors/1/regions/7/maps/38/sectors?ids=833,834':
             'continents2floors1regions7maps38sectors833_834',
     }
-    register_urls_to_files(mock_adapter, url_to_file)
+    utils.register_urls_to_files(mock_adapter, url_to_file)
 
     test = 'continents1_2'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents=[1, 2])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents1_2'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents='1,2')
     assert actual == expected, 'Incorrect for ' + test + ' b'
 
     test = 'continents2floors1_6'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=[1, 6])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions6_7'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=[6, 7])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions6maps350_549_900'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=6,
                                        maps=[350, 549, 900])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions7maps38sectors833_834'
-    expected = load_mock_json(test)
+    expected = utils.load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=7,
                                        maps=38, sectors=[833, 834])
     assert actual == expected, 'Incorrect for ' + test
@@ -327,12 +327,12 @@ def test_continents_backwards_compatibility(gw2_client, mock_adapter):
         'continents/2': 'continents2',
         'continents?ids=1,2': 'continents1_2',
     }
-    register_urls_to_files(mock_adapter, url_to_file)
+    utils.register_urls_to_files(mock_adapter, url_to_file)
 
-    expected_continent_list = load_mock_json('continents')
+    expected_continent_list = utils.load_mock_json('continents')
     assert gw2_client.continents.get() == expected_continent_list, '/continents failed'
 
-    expected_single_id = load_mock_json('continents2')
+    expected_single_id = utils.load_mock_json('continents2')
     assert gw2_client.continents.get(id=2) == expected_single_id, '/continents?id=2 failed'
 
 
@@ -345,6 +345,6 @@ def test_continents_backwards_compatibility_ids(gw2_client, mock_adapter):
         gw2_client: The pytest "gw2_client" fixture.
         mock_adapter: The pytest "mock_adapter" fixture.
     """
-    register_urls_to_files(mock_adapter, {'continents?ids=1,2': 'continents1_2'})
-    expected_multi_id = load_mock_json('continents1_2')
+    utils.register_urls_to_files(mock_adapter, {'continents?ids=1,2': 'continents1_2'})
+    expected_multi_id = utils.load_mock_json('continents1_2')
     assert gw2_client.continents.get(ids=[1, 2]) == expected_multi_id, '/continents?ids=1,2 failed'
