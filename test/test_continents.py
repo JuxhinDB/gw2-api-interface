@@ -1,16 +1,8 @@
 import collections
-import functools
-import inspect
 import itertools
-import json
-import os
-import pathlib
-
 import pytest
-import requests_mock
 
-
-from gw2api import GuildWars2Client
+from test.conftest import register_urls_to_files, load_mock_json
 
 
 def powerset(iterable):
@@ -26,93 +18,6 @@ def powerset(iterable):
     return itertools.chain.from_iterable(
         itertools.combinations(iterable, r) for r in range(len(iterable)+1)
     )
-
-
-@functools.lru_cache()
-def mocks_path():
-    """Returns the path to the stored mock JSON files.
-
-    Returns:
-        The path to the mock files to be loaded and sent to the API requests.
-    """
-    this_file = inspect.getframeinfo(inspect.currentframe()).filename
-    return pathlib.Path(os.path.dirname(os.path.abspath(this_file))) / 'mocks'
-
-
-def load_mock_text(filename_stem):
-    """Loads the mocks/{filename_stem}.json.
-
-    Args:
-        filename_stem: The stem of the filename to load, e.g. 'continents' would
-                       load mocks/continents.json.
-    Returns:
-        The file content as text.
-    """
-    with (mocks_path() / '{}.json'.format(filename_stem)).open() as f:
-        return f.read()
-
-
-def load_mock_json(filename_stem):
-    """Loads the mocks/{filename_stem}.json and parses it as JSON. Returns
-    the resulting dictionary.
-
-    Args:
-        filename_stem: The stem of the filename to load, e.g. 'continents' would
-                       load mocks/continents.json.
-    Returns:
-        The dictionary from the parsed JSON file.
-    """
-    return json.loads(load_mock_text(filename_stem))
-
-
-def register_urls_to_files(adapter, url_to_file):
-    """Registers a dictionary of urls to filename_stems with the mock adapter:
-
-        {
-            'continents/2': 'continents2'
-        }
-
-    would register the URL https://api.guildwars2.com/v2/continents/2 to
-    return the contents of mocks/continents2.json.
-
-    Args:
-        adapter: The mock adapter to register the urls against.
-        url_to_file: A dictionary mapping url parts to filenames, see above.
-    """
-    for url, filename_stem in url_to_file.items():
-        url = '{}/v2/{}'.format(GuildWars2Client.BASE_URL, url)
-        response = load_mock_text(filename_stem)
-        adapter.register_uri('GET', url, text=response)
-
-
-@pytest.fixture
-def mock_adapter():
-    """Creates a mock adapter instance.
-
-    As this is a pytest fixture, tests only need to provide an argument
-    with the name `mock_adapter` gain access to the mock adapter.
-
-    Returns:
-        A mock adapter. This exposes the register_uri function which can be used
-        to mock requests.
-    """
-    return requests_mock.Adapter()
-
-
-@pytest.fixture
-def gw2_client(mock_adapter):
-    """Creates a GuildWars2Client instance and mounts the mock adapter onto its
-    session.
-
-    As this is a pytest fixture, tests only need to provide an argument
-    with the name `gw2_client` to gain access to the mocked instance.
-
-    Returns:
-        A GuildWars2Client instance with a mock session.
-    """
-    gw2_client = GuildWars2Client()
-    gw2_client.session.mount('https://', mock_adapter)
-    return gw2_client
 
 
 def test_continents_single_id(gw2_client, mock_adapter):
@@ -150,7 +55,7 @@ def test_continents_single_id(gw2_client, mock_adapter):
         filename = ''.join(map(str, url_parts[:i+1]))
         url = '/'.join(map(str, url_parts[:i+1]))
         url_to_file[url] = filename
-    utils.register_urls_to_files(mock_adapter, url_to_file)
+    register_urls_to_files(mock_adapter, url_to_file)
 
     # Alternate between resource='all' and resource=fixed_id, appending
     # the deep levels to the flat levels:
@@ -166,7 +71,7 @@ def test_continents_single_id(gw2_client, mock_adapter):
         else:
             kwargs[url_parts[i - 1]] = url_parts[i]
 
-        expected = utils.load_mock_json(''.join(map(str, url_parts[:i+1])))
+        expected = load_mock_json(''.join(map(str, url_parts[:i+1])))
         actual = gw2_client.continents.get(**kwargs)
 
         assert actual == expected, 'Incorrect for ' + str(kwargs)
@@ -193,36 +98,36 @@ def test_continents_multi_id(gw2_client, mock_adapter):
         'continents/2/floors/1/regions/7/maps/38/sectors?ids=833,834':
             'continents2floors1regions7maps38sectors833_834',
     }
-    utils.register_urls_to_files(mock_adapter, url_to_file)
+    register_urls_to_files(mock_adapter, url_to_file)
 
     test = 'continents1_2'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=[1, 2])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents1_2'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents='1,2')
     assert actual == expected, 'Incorrect for ' + test + ' b'
 
     test = 'continents2floors1_6'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=[1, 6])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions6_7'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=[6, 7])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions6maps350_549_900'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=6,
                                        maps=[350, 549, 900])
     assert actual == expected, 'Incorrect for ' + test
 
     test = 'continents2floors1regions7maps38sectors833_834'
-    expected = utils.load_mock_json(test)
+    expected = load_mock_json(test)
     actual = gw2_client.continents.get(continents=2, floors=1, regions=7,
                                        maps=38, sectors=[833, 834])
     assert actual == expected, 'Incorrect for ' + test
@@ -327,12 +232,12 @@ def test_continents_backwards_compatibility(gw2_client, mock_adapter):
         'continents/2': 'continents2',
         'continents?ids=1,2': 'continents1_2',
     }
-    utils.register_urls_to_files(mock_adapter, url_to_file)
+    register_urls_to_files(mock_adapter, url_to_file)
 
-    expected_continent_list = utils.load_mock_json('continents')
+    expected_continent_list = load_mock_json('continents')
     assert gw2_client.continents.get() == expected_continent_list, '/continents failed'
 
-    expected_single_id = utils.load_mock_json('continents2')
+    expected_single_id = load_mock_json('continents2')
     assert gw2_client.continents.get(id=2) == expected_single_id, '/continents?id=2 failed'
 
 
@@ -345,6 +250,6 @@ def test_continents_backwards_compatibility_ids(gw2_client, mock_adapter):
         gw2_client: The pytest "gw2_client" fixture.
         mock_adapter: The pytest "mock_adapter" fixture.
     """
-    utils.register_urls_to_files(mock_adapter, {'continents?ids=1,2': 'continents1_2'})
-    expected_multi_id = utils.load_mock_json('continents1_2')
+    register_urls_to_files(mock_adapter, {'continents?ids=1,2': 'continents1_2'})
+    expected_multi_id = load_mock_json('continents1_2')
     assert gw2_client.continents.get(ids=[1, 2]) == expected_multi_id, '/continents?ids=1,2 failed'
