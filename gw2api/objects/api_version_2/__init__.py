@@ -188,7 +188,6 @@ class AccountMountsTypes(BaseAPIv2Object):
     pass
 
 
-
 class AccountNovelties(BaseAPIv2Object):
     """
          This returns information about novelties that are unlocked for an account.
@@ -456,7 +455,6 @@ class CharactersTraining(BaseAPIv2Object):
     pass
 
 
-
 class Colors(BaseAPIv2Object):
     """
          This returns all dye colors in the game, including localized names and their color component information.
@@ -477,14 +475,14 @@ class CommerceExchangeCoins(BaseAPIv2Object):
 
     def get(self, quantity):
         """Returns the current coins to gems exchange rate
-        
+
         Args:
             quantity: The number of coins to convert to gems
 
         Returns:
             The JSON response
-        """ 
-        
+        """
+
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url += "?quantity=" + str(quantity)
 
@@ -496,13 +494,13 @@ class CommerceExchangeGems(BaseAPIv2Object):
 
     def get(self, quantity):
         """Returns the current gems to coins exchange rate
-        
+
         Args:
             quantity: The number of gems to convert to coins
 
         Returns:
             The JSON response
-        """ 
+        """
 
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url += "?quantity=" + str(quantity)
@@ -763,22 +761,25 @@ class Gliders(BaseAPIv2Object):
 class GuildId(BaseAPIv2Object):
     """
         This returns core details about a given guild.
-        The end point will include more or less fields dependend on whether or not an API Key of a
+        The end point will include more or less fields dependent on whether or not an API Key of a
         Leader or Member of the Guild with the guilds scope is included in the Request.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
             This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
             Args:
+                guild_id: string, the id of the guild to add to the endpoint.
                 **kwargs
-                    id = int, the id of the guild to add to the endpoint
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
         """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdLog(BaseAPIv2Object):
@@ -787,18 +788,25 @@ class GuildIdLog(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdMembers(BaseAPIv2Object):
@@ -807,18 +815,25 @@ class GuildIdMembers(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdRanks(BaseAPIv2Object):
@@ -827,18 +842,25 @@ class GuildIdRanks(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdStash(BaseAPIv2Object):
@@ -847,18 +869,25 @@ class GuildIdStash(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdStorage(BaseAPIv2Object):
@@ -867,18 +896,25 @@ class GuildIdStorage(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdTeams(BaseAPIv2Object):
@@ -887,18 +923,25 @@ class GuildIdTeams(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdTreasury(BaseAPIv2Object):
@@ -907,18 +950,25 @@ class GuildIdTreasury(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildIdUpgrades(BaseAPIv2Object):
@@ -927,18 +977,25 @@ class GuildIdUpgrades(BaseAPIv2Object):
         The endpoint requires the scope guilds, and will only work if the API key is from the guild leader's account.
         Authenticated Endpoint.
     """
-    def get(self, id, **kwargs):
+    def get(self, guild_id, **kwargs):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the guild to add to the endpoint
+                     id = int, the id of the log to view.
+                     ids = list, the ids from the log to view.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', id)
-
-        return super().get(url=endpoint_url)
+        endpoint_url = endpoint_url.replace(':id', guild_id)
+        return super().get(url=endpoint_url,
+                           id=kwargs.get('id'),
+                           ids=kwargs.get('ids'),
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildPermissions(BaseAPIv2Object):
@@ -956,14 +1013,17 @@ class GuildSearch(BaseAPIv2Object):
         """
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
-             Args:
-                 **kwargs
-                     id = int, the id of the guild to add to the endpoint
+             name: string, the name of the guild to add to the endpoint.
+             **kwargs
+                 page = int, the page to start from.
+                 page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url += '?name={name}'.format(name=name)
 
-        return super().get(url=endpoint_url)
+        return super().get(url=endpoint_url,
+                           page=kwargs.get('page'),
+                           page_size=kwargs.get('page_size'))
 
 
 class GuildUpgrades(BaseAPIv2Object):

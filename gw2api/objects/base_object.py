@@ -49,37 +49,36 @@ class BaseAPIObject:
         # Done to allow cases where we need to call a specific endpoint
         #  without re-implementing the same method. If we specify the
         #  endpoint, ignore everything else and just sent the request
+        _id = kwargs.get('id')
+        ids = kwargs.get('ids')
+        page = kwargs.get('page')
+        page_size = kwargs.get('page_size')
+
         if not url:
             request_url = self._build_endpoint_base_url()
-
-            _id = kwargs.get('id')
-            ids = kwargs.get('ids')
-            page = kwargs.get('page')
-            page_size = kwargs.get('page_size')
-
-            if _id:
-                request_url += '/' + str(_id)  # {base_url}/{object}/{id}
-
-            if ids:
-                request_url += '?ids=' # {base_url}/{object}?ids={ids}
-                for _id in ids:
-                    request_url += str(_id) + ','
-
-            if page or page_size:
-                request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
-
-            if page:
-                request_url += 'page={page}&'.format(page=page)
-
-            if page_size:
-                assert 0 < page_size <= 200
-                request_url += 'page_size={page_size}'.format(page_size=page_size)
-
-            request_url = request_url.strip('&')  # Remove any trailing ampersand
-            request_url = request_url.strip(',')  # Remove any trailing commas from ids
         else:
             request_url = url
 
+        if _id:
+            request_url += '/' + str(_id)  # {base_url}/{object}/{id}
+
+        if ids:
+            request_url += '?ids='  # {base_url}/{object}?ids={ids}
+            for _id in ids:
+                request_url += str(_id) + ','
+
+        if page or page_size:
+            request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
+
+        if page:
+            request_url += 'page={page}&'.format(page=page)
+
+        if page_size:
+            assert 0 < page_size <= 200
+            request_url += 'page_size={page_size}'.format(page_size=page_size)
+
+        request_url = request_url.strip('&')  # Remove any trailing ampersand
+        request_url = request_url.strip(',')  # Remove any trailing commas from ids
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):
