@@ -89,7 +89,6 @@ class BaseAPIObject:
 
         request_url = request_url.strip('&')  # Remove any trailing ampersand
         request_url = request_url.strip(',')  # Remove any trailing commas from ids
-        print('finalurl', request_url)
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):
