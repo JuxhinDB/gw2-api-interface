@@ -41,14 +41,20 @@ class BaseAPIObject:
         self.version = GuildWars2Client.VERSION
 
     def get(self, url=None, **kwargs):
-        """Get a resource for specific object type"""
+        """Get a resource for specific object type
+
+            Args:
+                 url: string, the url to use instead of building a base url
+                 **kwargs
+                     id = int, an id to append to the API call.
+                     ids = list, the list of ids to append to the API call.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
+        """
 
         assert isinstance(self.session, Session), "BaseObject.session is not yet instantiated. Make sure an instance" \
                                                   "of GuildWars2APIClient is created first to be able to send requests."
 
-        # Done to allow cases where we need to call a specific endpoint
-        #  without re-implementing the same method. If we specify the
-        #  endpoint, ignore everything else and just sent the request
         _id = kwargs.get('id')
         ids = kwargs.get('ids')
         page = kwargs.get('page')
@@ -64,8 +70,12 @@ class BaseAPIObject:
 
         if ids:
             request_url += '?ids='  # {base_url}/{object}?ids={ids}
-            for _id in ids:
-                request_url += str(_id) + ','
+            try:
+                for _id in ids:
+                    request_url += str(_id) + ','
+            except TypeError:
+                request_url = request_url.replace('?ids=', '')
+                print("Could not add ids because the given ids argument is not an iterable.")
 
         if page or page_size:
             request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
@@ -79,6 +89,7 @@ class BaseAPIObject:
 
         request_url = request_url.strip('&')  # Remove any trailing ampersand
         request_url = request_url.strip(',')  # Remove any trailing commas from ids
+        print('finalurl', request_url)
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):
