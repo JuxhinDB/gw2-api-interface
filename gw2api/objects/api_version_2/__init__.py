@@ -776,7 +776,11 @@ class GuildId(BaseAPIv2Object):
                      page_size = int, the size of page to view.
         """
         endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
+        if type(guild_id) is str:
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        else:
+            endpoint_url = endpoint_url.replace(':id', '')
+            print('Failed to add Guild Id to url. It must be a string.')
         return super().get(url=endpoint_url,
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
@@ -795,16 +799,12 @@ class GuildIdLog(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -822,16 +822,12 @@ class GuildIdMembers(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -849,16 +845,12 @@ class GuildIdRanks(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -876,16 +868,12 @@ class GuildIdStash(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -903,16 +891,12 @@ class GuildIdStorage(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -930,16 +914,12 @@ class GuildIdTeams(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -957,16 +937,12 @@ class GuildIdTreasury(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 
@@ -984,16 +960,12 @@ class GuildIdUpgrades(BaseAPIv2Object):
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
                  **kwargs
-                     id = int, the id of the log to view.
-                     ids = list, the ids from the log to view.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
          """
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url = endpoint_url.replace(':id', guild_id)
         return super().get(url=endpoint_url,
-                           id=kwargs.get('id'),
-                           ids=kwargs.get('ids'),
                            page=kwargs.get('page'),
                            page_size=kwargs.get('page_size'))
 

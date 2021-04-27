@@ -70,7 +70,8 @@ class BaseAPIObject:
 
         if _id:
             request_url += '?id=' + str(_id)  # {base_url}/{object}/{id}
-        if ids:
+            request_url += '&'
+        elif ids:
             request_url += '?ids='  # {base_url}/{object}?ids={ids}
             try:
                 for _id in ids:
@@ -78,8 +79,10 @@ class BaseAPIObject:
             except TypeError:
                 request_url = request_url.replace('?ids=', '')
                 print("Could not add ids because the given ids argument is not an iterable.")
+            request_url = request_url.strip(',')
+            request_url += '&'
 
-        if page or page_size:
+        if (page or page_size) and '?' not in request_url:
             request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
 
         if page:
@@ -87,11 +90,10 @@ class BaseAPIObject:
 
         if page_size:
             assert 0 < page_size <= 200
-            request_url += 'page_size={page_size}'.format(page_size=page_size)
+            request_url += 'page_size={page_size}&'.format(page_size=page_size)
 
         request_url = request_url.strip('&')  # Remove any trailing ampersand
-        request_url = request_url.strip(',')  # Remove any trailing commas from ids
-        print('final url:', request_url)
+        print(request_url)
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):
