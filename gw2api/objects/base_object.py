@@ -50,6 +50,9 @@ class BaseAPIObject:
                      ids = list, the list of ids to append to the API call.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
+
+            Raises:
+                AssertionError: if page_size is less than 1 or greater than 200
         """
 
         assert isinstance(self.session, Session), "BaseObject.session is not yet instantiated. Make sure an instance" \
@@ -66,8 +69,7 @@ class BaseAPIObject:
             request_url = url
 
         if _id:
-            request_url += '/' + str(_id)  # {base_url}/{object}/{id}
-
+            request_url += '?id=' + str(_id)  # {base_url}/{object}/{id}
         if ids:
             request_url += '?ids='  # {base_url}/{object}?ids={ids}
             try:
@@ -89,6 +91,7 @@ class BaseAPIObject:
 
         request_url = request_url.strip('&')  # Remove any trailing ampersand
         request_url = request_url.strip(',')  # Remove any trailing commas from ids
+        print('final url:', request_url)
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):
