@@ -50,6 +50,7 @@ class BaseAPIObject:
                      ids = list, the list of ids to append to the API call.
                      page = int, the page to start from.
                      page_size = int, the size of page to view.
+                     schema_version = string, the version of the schema to use. example; '2019-02-21T00:00:00Z'
 
             Raises:
                 AssertionError: if page_size is less than 1 or greater than 200
@@ -62,37 +63,36 @@ class BaseAPIObject:
         ids = kwargs.get('ids')
         page = kwargs.get('page')
         page_size = kwargs.get('page_size')
+        schema_version = kwargs.get('schema_version')
 
         if not url:
             request_url = self._build_endpoint_base_url()
         else:
             request_url = url
 
-        if _id:
-            request_url += '?id=' + str(_id)  # {base_url}/{object}/{id}
-            request_url += '&'
-        elif ids:
-            request_url += '?ids='  # {base_url}/{object}?ids={ids}
-            try:
-                for _id in ids:
-                    request_url += str(_id) + ','
-            except TypeError:
-                request_url = request_url.replace('?ids=', '')
-                print("Could not add ids because the given ids argument is not an iterable.")
-            request_url = request_url.strip(',')
-            request_url += '&'
+        if bool(kwargs) and '?' not in request_url:
+            request_url += '?'
 
-        if (page or page_size) and '?' not in request_url:
-            request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
+        if _id:
+            request_url += f'id={str(_id)}&'  # {base_url}/{object}/{id}
+        elif ids:
+            try:
+                request_url += 'ids=' + ','.join([str(_) for _ in ids]) + '&'
+            except TypeError:
+                print("Could not add ids because the given ids argument is not an iterable.")
 
         if page:
-            request_url += 'page={page}&'.format(page=page)
+            request_url += f'page={page}&'
 
         if page_size:
             assert 0 < page_size <= 200
-            request_url += 'page_size={page_size}&'.format(page_size=page_size)
+            request_url += f'page_size={page_size}&'
 
-        request_url = request_url.strip('&')  # Remove any trailing ampersand
+        if schema_version:
+            request_url += f'v={schema_version}'
+
+        request_url = request_url.strip('&')  # Remove any trailing '&'
+        request_url = request_url.strip('?')  # Remove any trailing '&'
         print(request_url)
         return self.session.get(request_url)
 

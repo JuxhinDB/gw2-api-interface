@@ -501,7 +501,6 @@ class CommerceExchangeGems(BaseAPIv2Object):
         Returns:
             The JSON response
         """
-
         endpoint_url = self._build_endpoint_base_url()
         endpoint_url += "?quantity=" + str(quantity)
 
@@ -692,6 +691,40 @@ class CreateSubToken(BaseAPIv2Object):
         which can be used as a substitute for them.
         Authenticated Endpoint.
     """
+    def get(self, expire, permissions,  **kwargs):
+        """
+             This appends the match_id and guild_id to the endpoint and then passes it to the parent get() function.
+             Returns None if it fails to append expire date or permissions.
+
+             Args:
+                 expire: datetime, the date and time when the subtoken expires
+                 permissions: list, collection of permissions for subtoken to inherit
+                 **kwargs:
+                    urls: list, Endpoints that will be accessible using this Subtoken.
+         """
+        endpoint_url = self._build_endpoint_base_url() + '?'
+
+        try:
+            endpoint_url += f'expire={expire.isoformat()}&'
+        except AttributeError:
+            print('expire param must be of type datetime.')
+            return None
+
+        try:
+            endpoint_url += 'permissions=' + ','.join([str(_) for _ in permissions]) + '&'
+        except TypeError:
+            print("Could not add permissions because the given permissions argument is not an iterable.")
+            return None
+
+        urls = kwargs.get('urls')
+        if urls:
+            try:
+                endpoint_url += 'urls=' + ','.join([str(_) for _ in urls]) + '&'
+            except TypeError:
+                print("Could not add urls because the given urls argument is not an iterable.")
+                return None
+
+        return super().get(url=endpoint_url, **kwargs)
     pass
 
 
@@ -771,19 +804,17 @@ class GuildId(BaseAPIv2Object):
 
             Args:
                 guild_id: string, the id of the guild to add to the endpoint.
-                **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
         """
         endpoint_url = self._build_endpoint_base_url()
         if type(guild_id) is str:
-            endpoint_url = endpoint_url.replace(':id', guild_id)
+            try:
+                endpoint_url += endpoint_url.replace(':id', guild_id)
+            except TypeError:
+                return super().get(**kwargs)
         else:
-            endpoint_url = endpoint_url.replace(':id', '')
+            endpoint_url += endpoint_url.replace(':id', '')
             print('Failed to add Guild Id to url. It must be a string.')
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdLog(BaseAPIv2Object):
@@ -798,15 +829,21 @@ class GuildIdLog(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
+                 **kwargs:
+                    since: int, the id to use as a ceiling for return values.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+
+            since = kwargs.get('since')
+            if since:
+                endpoint_url += f'?since=={since}'
+
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdMembers(BaseAPIv2Object):
@@ -821,15 +858,14 @@ class GuildIdMembers(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdRanks(BaseAPIv2Object):
@@ -844,15 +880,14 @@ class GuildIdRanks(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdStash(BaseAPIv2Object):
@@ -867,15 +902,14 @@ class GuildIdStash(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdStorage(BaseAPIv2Object):
@@ -890,15 +924,14 @@ class GuildIdStorage(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdTeams(BaseAPIv2Object):
@@ -913,15 +946,14 @@ class GuildIdTeams(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdTreasury(BaseAPIv2Object):
@@ -935,16 +967,15 @@ class GuildIdTreasury(BaseAPIv2Object):
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              Args:
-                 guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
+                 guild_id: string, the id of the guild to add to the endpoint.w.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildIdUpgrades(BaseAPIv2Object):
@@ -959,15 +990,14 @@ class GuildIdUpgrades(BaseAPIv2Object):
 
              Args:
                  guild_id: string, the id of the guild to add to the endpoint.
-                 **kwargs
-                     page = int, the page to start from.
-                     page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url = endpoint_url.replace(':id', guild_id)
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildPermissions(BaseAPIv2Object):
@@ -986,16 +1016,14 @@ class GuildSearch(BaseAPIv2Object):
              This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
              name: string, the name of the guild to add to the endpoint.
-             **kwargs
-                 page = int, the page to start from.
-                 page_size = int, the size of page to view.
          """
-        endpoint_url = self._build_endpoint_base_url()
-        endpoint_url += '?name={name}'.format(name=name)
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url += '?name={name}'.format(name=name)
+        except TypeError:
+            return super().get(**kwargs)
 
-        return super().get(url=endpoint_url,
-                           page=kwargs.get('page'),
-                           page_size=kwargs.get('page_size'))
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class GuildUpgrades(BaseAPIv2Object):
@@ -1233,12 +1261,11 @@ class RecipesSearch(BaseAPIv2Object):
             **kwargs: dict, dictionary of key word arguments.
 
         Returns:
-            List of recipe ids that match the query.
+            List of recipe ids that match the query or None if input/output cant be converted to strings
         """
         if any(key in ['input', 'output'] for key in kwargs):
             param = 'input' if 'input' in kwargs else 'output'
             item_id = kwargs.get(param)
-
             endpoint_url = self._build_endpoint_base_url()
             endpoint_url += '?{param}={item_id}'.format(param=param, item_id=item_id)
 
@@ -1329,17 +1356,101 @@ class WvwAbilities(BaseAPIv2Object):
 
 class WvwMatches(BaseAPIv2Object):
     """
-        This returns further details about the specified match,
-        including the total score, kills and deaths, and further details for each map.
+        This returns either an array of matches or further details about a specified match.
     """
     pass
 
 
-class WvwMatchesStatsTeams(BaseAPIv2Object):
+class WvwMatchesOverview(BaseAPIv2Object):
     """
-        This returns specific details pertaining to guilds in the current selected matchup.
+        This returns either an array of matches or further details about a specified match.
     """
     pass
+
+
+class WvwMatchesScores(BaseAPIv2Object):
+    """
+        This returns either an array of match overviews or further details about a specified match.
+    """
+    pass
+
+
+class WvwMatchesStats(BaseAPIv2Object):
+    """
+        This returns either an array of match stats or further details about a specified match.
+    """
+    pass
+
+
+class WvwMatchesStatsGuilds(BaseAPIv2Object):
+    """
+        This returns specific details pertaining to guilds and their WVW stats.
+    """
+    def get(self, match_id, guild_id, **kwargs):
+        """
+             This appends the match_id and guild_id to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 guild_id: string, the id of the guild to add to the endpoint.
+                 match_id: int, the ID of the match.
+         """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', match_id)
+            endpoint_url = endpoint_url.replace(':guild_id', guild_id)
+        except TypeError:
+            print('Failed to set match id or guild id. Ensure they are both strings.')
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
+
+
+class WvwMatchesStatsTeamsKDR(BaseAPIv2Object):
+    """
+        This returns specific details pertaining to teams and their KDR.
+    """
+
+    def get(self, match_id, team_id, **kwargs):
+        """
+             This appends the match_id and team_id to the endpoint and then passes it to the parent get() function.
+             Returns None if it fails to append the ids.
+
+             Args:
+                 match_id: int, the ID of the match.
+                 team_id: string, the id of the guild to add to the endpoint.
+         """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', match_id)
+            endpoint_url = endpoint_url.replace(':guild_id', team_id)
+        except TypeError:
+            print('Failed to set match id or guild id. Ensure they are both strings.')
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
+
+
+class WvwMatchesStatsTeamsKills(BaseAPIv2Object):
+    """
+        This returns specific details pertaining to teams and their kills.
+    """
+    def get(self, match_id, team_id, **kwargs):
+        """
+             This appends the match_id and team_id to the endpoint and then passes it to the parent get() function.
+
+             Args:
+                 match_id: int, the ID of the match.
+                 team_id: string, the id of the guild to add to the endpoint.
+         """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', match_id)
+            endpoint_url = endpoint_url.replace(':guild_id', team_id)
+        except TypeError:
+            print('Failed to set match id or guild id. Ensure they are both strings.')
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class WvwObjectives(BaseAPIv2Object):
@@ -1427,7 +1538,7 @@ API_OBJECTS = [Account('account'),
                CommercePrices('commerce/prices'),
                CommerceTransactions('commerce/transactions'),
                Continents('continents'),
-               CreateSubToken('createsubtokens'),
+               CreateSubToken('createsubtoken'),
                Currencies('currencies'),
                DailyCrafting('dailycrafting'),
                Dungeons('dungeons'),
@@ -1492,7 +1603,12 @@ API_OBJECTS = [Account('account'),
                Worlds('worlds'),
                WvwAbilities('wvw/abilities'),
                WvwMatches('wvw/matches'),
-               WvwMatchesStatsTeams('wvw/matches/stats/teams'),
+               WvwMatchesOverview('wvw/matches/overview'),
+               WvwMatchesScores('wvw/matches/scores'),
+               WvwMatchesStats('wvw/matches/stats'),
+               WvwMatchesStatsGuilds('wvw/matches/stats/:id/guilds/:guild_id'),
+               WvwMatchesStatsTeamsKDR('wvw/matches/stats/:id/teams/:team/top/kdr'),
+               WvwMatchesStatsTeamsKills('wvw/matches/stats/:id/teams/:team/top/kills'),
                WvwObjectives('wvw/objectives'),
                WvwRanks('wvw/ranks'),
                WvwUpgrades('wvw/upgrades')]
