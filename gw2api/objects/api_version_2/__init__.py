@@ -329,7 +329,20 @@ class CharactersBackstory(BaseAPIv2Object):
          This returns information about the backstory of a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersBuildTabs(BaseAPIv2Object):
@@ -337,7 +350,20 @@ class CharactersBuildTabs(BaseAPIv2Object):
          This returns information about an accounts build template tabs.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersBuildTabsActive(BaseAPIv2Object):
@@ -346,7 +372,20 @@ class CharactersBuildTabsActive(BaseAPIv2Object):
          Only those flagged True in is_active are returned.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersCore(BaseAPIv2Object):
@@ -354,7 +393,20 @@ class CharactersCore(BaseAPIv2Object):
          This returns core information about a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersCrafting(BaseAPIv2Object):
@@ -363,7 +415,20 @@ class CharactersCrafting(BaseAPIv2Object):
          to a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersEquipment(BaseAPIv2Object):
@@ -371,7 +436,20 @@ class CharactersEquipment(BaseAPIv2Object):
          This returns information about the equipment on a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersEquipmentTabs(BaseAPIv2Object):
@@ -379,7 +457,20 @@ class CharactersEquipmentTabs(BaseAPIv2Object):
          This returns information about an accounts equipment template tabs.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersEquipmentTabsActive(BaseAPIv2Object):
@@ -388,7 +479,20 @@ class CharactersEquipmentTabsActive(BaseAPIv2Object):
          Only those flagged True in is_active are returned.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersHeroPoints(BaseAPIv2Object):
@@ -396,7 +500,20 @@ class CharactersHeroPoints(BaseAPIv2Object):
          This returns information about the hero points obtained by a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersInventory(BaseAPIv2Object):
@@ -404,7 +521,20 @@ class CharactersInventory(BaseAPIv2Object):
          This returns information about the inventory of a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersQuests(BaseAPIv2Object):
@@ -412,7 +542,20 @@ class CharactersQuests(BaseAPIv2Object):
          This returns information about the quests selected that by a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersRecipes(BaseAPIv2Object):
@@ -420,7 +563,20 @@ class CharactersRecipes(BaseAPIv2Object):
          This returns information about recipes that the given character can use.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersSab(BaseAPIv2Object):
@@ -428,7 +584,20 @@ class CharactersSab(BaseAPIv2Object):
          This returns information about Super Adventure Box on a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersSkills(BaseAPIv2Object):
@@ -436,7 +605,20 @@ class CharactersSkills(BaseAPIv2Object):
          This returns information about the skills equipped on a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersSpecialization(BaseAPIv2Object):
@@ -444,7 +626,20 @@ class CharactersSpecialization(BaseAPIv2Object):
          This returns information about the specializations equipped on a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class CharactersTraining(BaseAPIv2Object):
@@ -452,7 +647,21 @@ class CharactersTraining(BaseAPIv2Object):
          This returns information about the training of a character attached to a specific account.
          Authenticated Endpoint.
      """
-    pass
+
+    def get(self, char_id, **kwargs):
+        """
+            This appends the 'id' to the endpoint and then passes it to the parent get() function.
+
+            Args:
+                char_id: string, the id of the character to add to the endpoint.
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        try:
+            endpoint_url = endpoint_url.replace(':id', char_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class Colors(BaseAPIv2Object):
@@ -694,7 +903,7 @@ class CreateSubToken(BaseAPIv2Object):
     def get(self, expire, permissions,  **kwargs):
         """
              This appends the match_id and guild_id to the endpoint and then passes it to the parent get() function.
-             Returns None if it fails to append expire date or permissions.
+             Returns None if it fails to append expire datem, permissions, or urls.
 
              Args:
                  expire: datetime, the date and time when the subtoken expires
@@ -806,14 +1015,11 @@ class GuildId(BaseAPIv2Object):
                 guild_id: string, the id of the guild to add to the endpoint.
         """
         endpoint_url = self._build_endpoint_base_url()
-        if type(guild_id) is str:
-            try:
-                endpoint_url += endpoint_url.replace(':id', guild_id)
-            except TypeError:
-                return super().get(**kwargs)
-        else:
-            endpoint_url += endpoint_url.replace(':id', '')
-            print('Failed to add Guild Id to url. It must be a string.')
+        try:
+            endpoint_url = endpoint_url.replace(':id', guild_id)
+        except TypeError:
+            return super().get(**kwargs)
+
         return super().get(url=endpoint_url, **kwargs)
 
 
@@ -884,7 +1090,7 @@ class GuildIdRanks(BaseAPIv2Object):
         try:
             endpoint_url = self._build_endpoint_base_url()
             endpoint_url = endpoint_url.replace(':id', guild_id)
-        except:
+        except TypeError:
             return super().get(**kwargs)
 
         return super().get(url=endpoint_url, **kwargs)
@@ -1193,7 +1399,40 @@ class PvPSeasonsLeaderboards(BaseAPIv2Object):
     """
         This returns information about League season leaderboards for either NA or EU.
     """
-    pass
+    def get(self, season_id, **kwargs):
+        """
+             This appends the 'id' to the endpoint and then passes it to the parent get() function.
+             Appends board and region if they are supplied
+
+             Args:
+                 season_id: string, the id of the guild to add to the endpoint.
+                 **kwargs
+                    board: string, type of leaderboard to get. I.E. 'legendary'
+                    region: string, the region to get leaderboard of. I.E. 'eu/na
+         """
+        try:
+            endpoint_url = self._build_endpoint_base_url()
+            endpoint_url = endpoint_url.replace(':id', season_id)
+        except TypeError:
+            return super().get(**kwargs)
+
+        board = kwargs.get('board')
+        if board:
+            try:
+                endpoint_url += f'/{board}'
+            except TypeError:
+                print("Failed to add board. Ensure it is of type string")
+                return None
+
+        region = kwargs.get('region')
+        if region:
+            try:
+                endpoint_url += f'/{region}'
+            except TypeError:
+                print("Failed to add region. Ensure it is of type string")
+                return None
+
+        return super().get(url=endpoint_url, **kwargs)
 
 
 class PvPStandings(BaseAPIv2Object):
@@ -1422,9 +1661,9 @@ class WvwMatchesStatsTeamsKDR(BaseAPIv2Object):
         endpoint_url = self._build_endpoint_base_url()
         try:
             endpoint_url = endpoint_url.replace(':id', match_id)
-            endpoint_url = endpoint_url.replace(':guild_id', team_id)
+            endpoint_url = endpoint_url.replace(':team', team_id)
         except TypeError:
-            print('Failed to set match id or guild id. Ensure they are both strings.')
+            print('Failed to set match id or team id. Ensure they are both strings.')
             return super().get(**kwargs)
 
         return super().get(url=endpoint_url, **kwargs)
@@ -1445,9 +1684,9 @@ class WvwMatchesStatsTeamsKills(BaseAPIv2Object):
         endpoint_url = self._build_endpoint_base_url()
         try:
             endpoint_url = endpoint_url.replace(':id', match_id)
-            endpoint_url = endpoint_url.replace(':guild_id', team_id)
+            endpoint_url = endpoint_url.replace(':team', team_id)
         except TypeError:
-            print('Failed to set match id or guild id. Ensure they are both strings.')
+            print('Failed to set match id or team id. Ensure they are both strings.')
             return super().get(**kwargs)
 
         return super().get(url=endpoint_url, **kwargs)
@@ -1582,7 +1821,7 @@ API_OBJECTS = [Account('account'),
                PvPHeroes('pvp/heroes'),
                PvPRanks('pvp/ranks'),
                PvPSeasons('pvp/seasons'),
-               PvPSeasonsLeaderboards('pvp/seasons/leaderboards'),
+               PvPSeasonsLeaderboards('pvp/seasons/:id/leaderboards'),
                PvPStandings('pvp/standings'),
                PvPStats('pvp/stats'),
                Quaggans('quaggans'),
