@@ -142,7 +142,12 @@
 - WvW
     - Abilities
     - Matches
-    - Matches Stats Teams
+    - Matches Overview
+    - Matches Scores
+    - Matches Stats
+    - Matches Stats Guilds
+    - Matches Stats Teams KDR
+    - Matches Stats Teams Kills
     - Objectives
     - Ranks
     - Upgrades
