@@ -139,6 +139,25 @@ class Cats(BaseAPIv2Object):
 class Characters(BaseAPIv2Object):
     pass
 
+class CharactersInventory(BaseAPIv2Object):
+    """Returns information about the inventory of a character attached to a specific account"""
+    def get(self, id, **kwargs):
+        """
+        Returns information about the inventory of a character
+
+        Args:
+            id: name of a character attached to a specific account
+            access_token: (optional) If the API key is not specified in the request header, it can be specified here
+
+        Returns:
+            The JSON response
+        """
+        endpoint_url = self._build_endpoint_base_url()
+        endpoint_url = endpoint_url.replace(':id', id)
+
+        return super().get(url=endpoint_url)
+
+
 
 class Colors(BaseAPIv2Object):
     pass
@@ -684,6 +703,7 @@ API_OBJECTS = [Account('account'),
                Build('build'),
                Cats('cats'),
                Characters('characters'),
+               CharactersInventory('characters/:id/inventory'),
                Colors('colors'),
                CommerceDelivery('commerce/delivery'),
                CommerceExchange('commerce/exchange'),
