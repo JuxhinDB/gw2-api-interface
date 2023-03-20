@@ -41,45 +41,59 @@ class BaseAPIObject:
         self.version = GuildWars2Client.VERSION
 
     def get(self, url=None, **kwargs):
-        """Get a resource for specific object type"""
+        """Get a resource for specific object type
+
+            Args:
+                 url: string, the url to use instead of building a base url
+                 **kwargs
+                     id = int, an id to append to the API call.
+                     ids = list, the list of ids to append to the API call.
+                     page = int, the page to start from.
+                     page_size = int, the size of page to view.
+                     schema_version = string, the version of the schema to use. example; '2019-02-21T00:00:00Z'
+
+            Raises:
+                AssertionError: if page_size is less than 1 or greater than 200
+        """
 
         assert isinstance(self.session, Session), "BaseObject.session is not yet instantiated. Make sure an instance" \
                                                   "of GuildWars2APIClient is created first to be able to send requests."
 
-        # Done to allow cases where we need to call a specific endpoint
-        #  without re-implementing the same method. If we specify the
-        #  endpoint, ignore everything else and just sent the request
+        _id = kwargs.get('id')
+        ids = kwargs.get('ids')
+        page = kwargs.get('page')
+        page_size = kwargs.get('page_size')
+        schema_version = kwargs.get('schema_version')
+
         if not url:
             request_url = self._build_endpoint_base_url()
-
-            _id = kwargs.get('id')
-            ids = kwargs.get('ids')
-            page = kwargs.get('page')
-            page_size = kwargs.get('page_size')
-
-            if _id:
-                request_url += '/' + str(_id)  # {base_url}/{object}/{id}
-
-            if ids:
-                request_url += '?ids=' # {base_url}/{object}?ids={ids}
-                for _id in ids:
-                    request_url += str(_id) + ','
-
-            if page or page_size:
-                request_url += '?'  # {base_url}/{object}?page={page}&page_size={page_size}
-
-            if page:
-                request_url += 'page={page}&'.format(page=page)
-
-            if page_size:
-                assert 0 < page_size <= 200
-                request_url += 'page_size={page_size}'.format(page_size=page_size)
-
-            request_url = request_url.strip('&')  # Remove any trailing ampersand
-            request_url = request_url.strip(',')  # Remove any trailing commas from ids
         else:
             request_url = url
 
+        if bool(kwargs) and '?' not in request_url:
+            request_url += '?'
+
+        if _id:
+            request_url += f'id={str(_id)}&'  # {base_url}/{object}/{id}
+        elif ids:
+            try:
+                request_url += 'ids=' + ','.join([str(_) for _ in ids]) + '&'
+            except TypeError:
+                print("Could not add ids because the given ids argument is not an iterable.")
+
+        if page:
+            request_url += f'page={page}&'
+
+        if page_size:
+            assert 0 < page_size <= 200
+            request_url += f'page_size={page_size}&'
+
+        if schema_version:
+            request_url += f'v={schema_version}'
+
+        request_url = request_url.strip('&')  # Remove any trailing '&'
+        request_url = request_url.strip('?')  # Remove any trailing '&'
+        print(request_url)
         return self.session.get(request_url)
 
     def _build_endpoint_base_url(self):

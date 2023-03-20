@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-__version__ = '0.5.7'
+__version__ = '0.6.0'
 REPOSITORY = 'https://github.com/JuxhinDB/gw2-api-interface'
 
 with open('README.rst', 'r') as f:
