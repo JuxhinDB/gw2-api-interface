@@ -94,7 +94,10 @@ class BaseAPIObject:
         request_url = request_url.strip('&')  # Remove any trailing '&'
         request_url = request_url.strip('?')  # Remove any trailing '&'
         print(request_url)
-        return self.session.get(request_url)
+
+        response = self.session.get(request_url)
+        response.raise_for_status()
+        return response    
 
     def _build_endpoint_base_url(self):
         """Construct the base URL to access an API object"""
