@@ -93,7 +93,6 @@ class BaseAPIObject:
 
         request_url = request_url.strip('&')  # Remove any trailing '&'
         request_url = request_url.strip('?')  # Remove any trailing '&'
-        print(request_url)
 
         response = self.session.get(request_url)
         response.raise_for_status()
