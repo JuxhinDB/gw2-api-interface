@@ -31,8 +31,7 @@ class BaseAPIObject:
                              or `object_type` are not set.
         """
         if not object_type:
-            raise ValueError('API Object requires `object_type` to be passed for %s'
-                             .format(self.__class__.__name__))
+            raise ValueError(f'API Object requires `object_type` to be passed for {self.__class__.__name__}')
 
         self.session = None
         self.object_type = object_type
@@ -81,8 +80,8 @@ class BaseAPIObject:
                     request_url += 'ids=all&'
                 else:
                     request_url += 'ids=' + ','.join([str(_) for _ in ids]) + '&'
-            except TypeError:
-                print("Could not add ids because the given ids argument is not an iterable.")
+            except TypeError as e:
+                raise TypeError(f'Invalid `ids` parameter, must be an iterable or keyword `all`, {e}')
 
         if page:
             request_url += f'page={page}&'

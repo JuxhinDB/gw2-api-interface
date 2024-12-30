@@ -31,7 +31,7 @@ def test_coins_to_gems(gw2_client, mock_adapter):
     assert result["quantity"] == 34
 
 
-def test_coins_to_gems(gw2_client, mock_adapter):
+def test_coins_to_gems_small(gw2_client, mock_adapter):
     """Tests conversion of gems to coins
 
     Args:
