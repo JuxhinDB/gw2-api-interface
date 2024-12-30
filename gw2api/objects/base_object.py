@@ -77,7 +77,10 @@ class BaseAPIObject:
             request_url += f'id={str(_id)}&'  # {base_url}/{object}/{id}
         elif ids:
             try:
-                request_url += 'ids=' + ','.join([str(_) for _ in ids]) + '&'
+                if ids=='all':
+                    request_url += 'ids=all&'
+                else:
+                    request_url += 'ids=' + ','.join([str(_) for _ in ids]) + '&'
             except TypeError:
                 print("Could not add ids because the given ids argument is not an iterable.")
 
