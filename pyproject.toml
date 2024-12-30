@@ -1,4 +1,43 @@
 [build-system]
-requires = ["setuptools >= 61.0"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "GuildWars2-API-Client"
+version = "0.7.0"
+description = "Library that interfaces with the Guild Wars 2 API that supports v1 and v2"
+readme = "README.rst"
+license = { file = "LICENSE" }
+authors = [
+  { name = "juxhin", email = "juxhin@digital-horror.com" }
+]
+
+# Dependencies previously specified under install_requires
+dependencies = [
+  "requests",
+]
+
+# Move your keywords list up here in the [project] table.
+keywords = [
+  "guildwars",
+  "api",
+  "gw2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff",
+]
+
+[project.urls]
+Home = "https://github.com/JuxhinDB/gw2-api-interface"
+
+[tool.setuptools.packages.find]
+exclude = ["test", "res"]
+
+[tool.setuptools]
+license-files = []
 
