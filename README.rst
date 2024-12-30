@@ -178,7 +178,8 @@ If you want to generate your own API key, please refer to the following
 Cursors and Limits
 ^^^^^^^^^^^^^^^^^^
 
-WIP
+Currently unimplemented. If you require cursors & limits, a PR is greatly appreciated. I will be 
+able to mentor you on the implementation if/when needed.
 
 
 Examples

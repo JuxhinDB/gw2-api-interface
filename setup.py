@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-__version__ = '0.6.0'
+__version__ = '0.7.0'
 REPOSITORY = 'https://github.com/JuxhinDB/gw2-api-interface'
 
 with open('README.rst', 'r') as f:
@@ -21,6 +21,11 @@ setup(
     install_requires=[
         'requests',
     ],
+    extras_require={
+        'dev': [
+            'ruff'
+        ]
+    },
     license='MIT',
     keywords=['guildwars 2', 'api', 'gw2']
 )
