@@ -350,18 +350,21 @@ class CharactersBuildTabs(BaseAPIv2Object):
          This returns information about an accounts build template tabs.
          Authenticated Endpoint.
      """
-    def get(self, char_id, **kwargs):
+    def get(self, char_id, tabs=None, **kwargs):
         """
             This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
             Args:
                 char_id: string, the id of the character to add to the endpoint.
+                tabs: string, a list of comma separated tab ids, or 'all'
         """
         endpoint_url = self._build_endpoint_base_url()
         try:
             endpoint_url = endpoint_url.replace(':id', char_id)
         except TypeError:
             return super().get(**kwargs)
+        if tabs is not None:
+            endpoint_url += f'?tabs={tabs}'
 
         return super().get(url=endpoint_url, **kwargs)
 
@@ -457,18 +460,21 @@ class CharactersEquipmentTabs(BaseAPIv2Object):
          This returns information about an accounts equipment template tabs.
          Authenticated Endpoint.
      """
-    def get(self, char_id, **kwargs):
+    def get(self, char_id, tabs=None, **kwargs):
         """
             This appends the 'id' to the endpoint and then passes it to the parent get() function.
 
             Args:
                 char_id: string, the id of the character to add to the endpoint.
+                tabs: string, a list of comma separated tab ids, or 'all'
         """
         endpoint_url = self._build_endpoint_base_url()
         try:
             endpoint_url = endpoint_url.replace(':id', char_id)
         except TypeError:
             return super().get(**kwargs)
+        if tabs is not None:
+            endpoint_url += f'?tabs={tabs}'
 
         return super().get(url=endpoint_url, **kwargs)
 
